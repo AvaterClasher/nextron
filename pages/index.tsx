@@ -42,11 +42,11 @@ const Home: NextPage = () => {
       <div className='mt-24 grid items-start justify-center gap-8'>
         <div className='group relative'>
           <div className='animate-tilt absolute -inset-0.5 rounded-lg bg-gradient-to-r from-pink-600 to-purple-600 opacity-75 blur-2xl filter transition duration-1000 group-hover:opacity-100 group-hover:duration-200'></div>
-          <a
-            className='font-cal block transform rounded bg-blue-500 px-8 py-4 text-2xl font-bold text-white transition-all duration-150 hover:scale-105'
-            href='/auth/login'>
-            Get Started <span className='ml-2 '>→</span>
-          </a>
+          <Link href='/signup'>
+            <a className='font-cal block transform rounded bg-blue-500 px-8 py-4 text-2xl font-bold text-white transition-all duration-150 hover:scale-105'>
+              Get Started <span className='ml-2 '>→</span>
+            </a>
+          </Link>
         </div>
       </div>
 

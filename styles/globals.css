@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 html.dark {
-  @apply bg-black;
+  @apply bg-black selection:!bg-blue-500;
 }
 
 html .logo {
@@ -25,6 +25,14 @@ html {
 *::selection {
   background: hsl(169, 90%, 72%);
   color: black;
+}
+
+.text-invert {
+  @apply bg-black text-white dark:invert;
+}
+
+.text-no-invert {
+  @apply bg-white text-black dark:invert-0;
 }
 
 a {
