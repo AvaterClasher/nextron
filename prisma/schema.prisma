@@ -4,13 +4,12 @@
 datasource db {
   provider             = "postgresql"
   url                  = env("DATABASE_URL")
-  referentialIntegrity = "prisma"
+  relationMode = "prisma"
 }
 
 generator client {
   provider      = "prisma-client-js"
   binaryTargets = ["native", "debian-openssl-1.1.x", "debian-openssl-3.0.x"]
-  previewFeatures = ["referentialIntegrity"]
 }
 
 model Account {
@@ -31,6 +30,7 @@ model Account {
   oauth_token              String?
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
   @@unique([provider, providerAccountId])
+  @@index([userId])
 }
 
 model Session {
@@ -39,6 +39,8 @@ model Session {
   userId       String
   expires      DateTime
   user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
 }
 
 model User {
@@ -57,4 +59,50 @@ model VerificationToken {
   token      String   @unique
   expires    DateTime
   @@unique([identifier, token])
+}
+
+model Sites {
+  id              String     @id @default(cuid())
+  createdAt       DateTime   @default(now())
+  updatedAt       DateTime   @updatedAt
+  createdBy       String
+  repoLink        String
+  siteName        String
+  siteDescription String
+  ogImageUrl      String
+  web3formsKey    String
+  feedbacks       Feedback[]
+  customHead      String?
+  homePage        String?
+  navbar          String?
+  shikiTheme      String?
+  blogs           Blog[]
+}
+
+model Feedback {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+  siteId    String
+  site      Sites    @relation(fields: [siteId], references: [id], onDelete: Cascade)
+  feedback  String
+  stars     Int
+  sentBy    String?
+
+  @@index([siteId])
+}
+
+model Blog {
+  id          String   @id @default(cuid())
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  siteId      String
+  site        Sites    @relation(fields: [siteId], references: [id], onDelete: Cascade)
+  title       String
+  description String
+  ogImageUrl  String
+  content     String
+  postedBy    String
+  published   Boolean  @default(false)
+
+  @@index([siteId])
 }
