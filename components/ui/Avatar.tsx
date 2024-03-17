@@ -7,7 +7,7 @@ const Avatar: React.FC<{ img: string; fallBack: string }> = ({
   return (
     <RadixAvatar.Root>
       <RadixAvatar.Image
-        className='w-9 rounded-full group-focus:ring group-focus:ring-blue-500 group-focus:ring-offset-2'
+        className='w-9 rounded-full group-focus:ring group-focus:ring-blue-500'
         src={img}
       />
       <RadixAvatar.Fallback
