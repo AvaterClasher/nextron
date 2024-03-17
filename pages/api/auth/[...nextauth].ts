@@ -8,6 +8,9 @@ export default NextAuth({
     GitHubProvider({
       clientId: process.env.GITHUB_CLIENT_ID,
       clientSecret: process.env.GITHUB_CLIENT_SECRET,
+      httpOptions: {
+        timeout: 10000,
+      },
       profile(profile) {
         return {
           id: profile.id.toString(),
@@ -19,7 +22,7 @@ export default NextAuth({
       },
     }),
   ],
-  secret: process.env.SECRET,
+  secret: process.env.NEXTAUTH_SECRET,
   pages: {
     signIn: `/login`,
     verifyRequest: `/login`,

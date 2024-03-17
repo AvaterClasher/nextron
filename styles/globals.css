@@ -28,11 +28,11 @@ html {
 }
 
 .text-invert {
-  @apply bg-black text-white dark:invert;
+  @apply bg-black text-white dark:bg-white dark:text-black;
 }
 
 .text-no-invert {
-  @apply bg-white text-black dark:invert-0;
+  @apply bg-white text-black dark:bg-black dark:text-white;
 }
 
 a {
