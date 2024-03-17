@@ -3,6 +3,7 @@ import { CustomLink } from '@/components/ui/Link'
 import { Input } from '@/components/ui/Input'
 import ProtectedRoute from '@/lib/ProtectedRoute'
 import { useSession } from 'next-auth/react'
+import Loader from '@/components/ui/Loader'
 import { useEffect, useState } from 'react'
 import { Plus } from 'react-feather'
 import { Site } from '@prisma/client'
@@ -54,6 +55,7 @@ const Dashboard = () => {
           </CustomLink>
         </div>
         <div className='mt-10 grid grid-cols-1 gap-5 sm:grid-cols-3'>
+          {!data && !error && <Loader />}
           {results &&
             results.map((site) => {
               return (
