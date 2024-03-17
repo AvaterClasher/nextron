@@ -9,6 +9,8 @@
     "prebuild": "prisma generate"
   },
   "dependencies": {
+    "@hookform/devtools": "^4.0.2",
+    "@hookform/resolvers": "^2.8.8",
     "@next-auth/prisma-adapter": "^1.0.1",
     "@prisma/client": "^5.12.0-dev.14",
     "@radix-ui/react-avatar": "^1.0.4",
@@ -16,17 +18,21 @@
     "axios": "^1.6.8",
     "clsx": "^1.1.1",
     "framer-motion": "^6.2.4",
+    "react-hook-form": "^7.26.0",
     "next": "12.0.10",
     "next-auth": "^4.1.2",
     "next-themes": "^0.0.15",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-feather": "^2.0.9",
+    "react-textarea-autosize": "^8.3.3",
+    "snarkdown": "^2.0.0",
     "react-hot-toast": "^2.4.1",
     "react-markdown": "^9.0.1",
     "react-rough-notation": "^1.0.1",
     "react-tiny-tooltip": "^0.1.0",
     "swr": "^2.2.5",
+    "zod": "^3.11.6",
     "use-link-prefetch": "^0.1.1"
   },
   "devDependencies": {

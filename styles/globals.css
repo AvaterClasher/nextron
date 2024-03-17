@@ -6,6 +6,10 @@ html.dark {
   @apply bg-black selection:!bg-blue-500;
 }
 
+* {
+  box-sizing: border-box;
+}
+
 html .logo {
   -webkit-filter: invert(0%); /* safari 6.0 - 9.0 */
   filter: invert(0%);
@@ -23,7 +27,7 @@ html {
 }
 
 .text-light {
-  @apply text-gray-500 dark:text-gray-300;
+  @apply text-gray-600 dark:text-gray-300;
 }
 
 *::selection {
@@ -39,11 +43,6 @@ html {
   @apply bg-white text-black dark:bg-black dark:text-white;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-* {
-  box-sizing: border-box;
+.text-input {
+  @apply relative -bottom-[1px] m-px rounded border border-slate-400 px-5 py-[9px] focus:border-transparent focus:outline-none focus:ring-2 focus:ring-blue-500;
 }
