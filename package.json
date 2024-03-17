@@ -23,6 +23,7 @@
     "react-dom": "17.0.2",
     "react-feather": "^2.0.9",
     "react-hot-toast": "^2.4.1",
+    "react-markdown": "^9.0.1",
     "react-rough-notation": "^1.0.1",
     "react-tiny-tooltip": "^0.1.0",
     "swr": "^2.2.5",
