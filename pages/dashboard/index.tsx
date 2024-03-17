@@ -1,5 +1,5 @@
 import DashboardNav from '@/components/DashboardNav'
-import { Button } from '@/components/ui/Button'
+import { CustomLink } from '@/components/ui/Link'
 import { Input } from '@/components/ui/Input'
 import ProtectedRoute from '@/lib/ProtectedRoute'
 import { useSession } from 'next-auth/react'
@@ -38,9 +38,9 @@ const Dashboard = () => {
             id='search-input'
             className='w-full max-w-[10/12]'
           />
-          <Button className='!ml-5 block w-52'>
+          <CustomLink href='/new' className='!ml-5 block w-52 p-0 text-center'>
             <Plus className='relative -top-px inline-block' /> New Project
-          </Button>
+          </CustomLink>
         </div>
         <p className='mt-5'>Search results for: {searchQuery}</p>
       </div>
