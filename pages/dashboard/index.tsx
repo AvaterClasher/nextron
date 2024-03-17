@@ -1,16 +1,48 @@
 import DashboardNav from '@/components/DashboardNav'
-import { Heading2 } from '@/components/ui/Typography'
+import { Button } from '@/components/ui/Button'
+import { Input } from '@/components/ui/Input'
 import ProtectedRoute from '@/lib/ProtectedRoute'
 import { useSession } from 'next-auth/react'
+import { useEffect, useState } from 'react'
+import { Plus } from 'react-feather'
 
 const Dashboard = () => {
-  const { data } = useSession()
-  const user = data?.user
+  const [searchQuery, setSearchQuery] = useState<string>('')
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === '/') {
+        const searchInput = document.getElementById(
+          'search-input'
+        ) as HTMLInputElement
+        searchInput.value === '' && e.preventDefault()
+        searchInput.focus()
+      }
+    }
+    window.addEventListener('keydown', handleKeyDown)
+
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown)
+    }
+  }, [])
   return (
     <ProtectedRoute>
       <DashboardNav />
       <div className='mx-auto max-w-6xl px-10'>
-        <Heading2>{user?.name}&apos;s Documentation sites</Heading2>
+        <div className='flex w-full justify-between'>
+          <Input
+            onChange={(e) => {
+              setSearchQuery(e.target.value)
+            }}
+            placeholder='Search...'
+            id='search-input'
+            className='w-full max-w-[10/12]'
+          />
+          <Button className='!ml-5 block w-52'>
+            <Plus className='relative -top-px inline-block' /> New Project
+          </Button>
+        </div>
+        <p className='mt-5'>Search results for: {searchQuery}</p>
       </div>
     </ProtectedRoute>
   )

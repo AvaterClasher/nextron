@@ -35,7 +35,7 @@ export const MenuContent: React.FC<{ isOpen: boolean }> = ({
           asChild
           forceMount
           align='start'
-          className='block !w-full !max-w-lg rounded border border-slate-200 shadow-lg dark:border-slate-600'>
+          className='g-white block !w-full !max-w-lg rounded border border-slate-200 shadow-lg dark:border-slate-600 dark:bg-black'>
           <motion.div
             initial={{
               opacity: 0,
@@ -95,7 +95,5 @@ export const MenuItem: React.FC<{
 }
 
 export const MenuSeparator: React.FC = () => {
-  return (
-    <RadixMenu.Separator className='h-px bg-slate-200 dark:bg-slate-600' />
-  )
+  return <RadixMenu.Separator className='h-px bg-slate-200 dark:bg-slate-600' />
 }
