@@ -4,16 +4,18 @@ import { Heading1 } from '@/components/ui/Typography'
 import ProtectedRoute from '@/lib/ProtectedRoute'
 import clsx from 'clsx'
 import { useSession } from 'next-auth/react'
-import Link from 'next/link'
+import Logo from '@/components/Logo'
 import { useRouter } from 'next/router'
 import ReactMarkdown from 'react-markdown'
 
 type ActiveTab =
   | 'overview'
-  | 'snippet-injection'
+  | 'snippet'
   | 'blog'
   | 'feedbacks'
   | 'integrations'
+  | 'navbar'
+  | 'announcement'
   | 'settings'
 
 interface SideBarLinks {
@@ -40,8 +42,8 @@ const DashboardLayout: React.FC<{
     },
     {
       name: 'Snippet injection',
-      href: `/dashboard/${siteId}/snippet-injection`,
-      active: 'snippet-injection',
+      href: `/dashboard/${siteId}/snippet`,
+      active: 'snippet',
     },
     {
       name: 'Blog',
@@ -54,9 +56,14 @@ const DashboardLayout: React.FC<{
       active: 'feedbacks',
     },
     {
-      name: `Integrations`,
-      href: `/dashboard/${siteId}/integrations`,
-      active: 'integrations',
+      name: `Navbar`,
+      href: `/dashboard/${siteId}/navbar`,
+      active: 'navbar',
+    },
+    {
+      name: `Announcement`,
+      href: `/dashboard/${siteId}/announcement`,
+      active: 'announcement',
     },
     {
       name: `Settings`,
@@ -69,6 +76,9 @@ const DashboardLayout: React.FC<{
     <ProtectedRoute>
       <div className='flex h-screen w-screen'>
         <aside className='relative w-2/12 border-r-2 border-r-slate-200 pt-24 dark:border-r-slate-800'>
+          <div className='absolute top-0 p-4'>
+            <Logo href='/dashboard' />
+          </div>
           <ul className='space-y-3 px-4'>
             {sideBarLinks.map((link, index) => {
               return (
