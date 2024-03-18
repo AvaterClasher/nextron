@@ -9,8 +9,9 @@ datasource db {
 }
 
 generator client {
-  provider      = "prisma-client-js"
+  provider        = "prisma-client-js"
   binaryTargets = ["native", "debian-openssl-1.1.x", "debian-openssl-3.0.x"]
+  previewFeatures = ["referentialIntegrity"]
 }
 
 model Account {
@@ -29,7 +30,9 @@ model Account {
   session_state            String?
   oauth_token_secret       String?
   oauth_token              String?
+
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
   @@unique([provider, providerAccountId])
 }
 
@@ -39,7 +42,6 @@ model Session {
   userId       String
   expires      DateTime
   user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-
 }
 
 model User {
@@ -57,6 +59,7 @@ model VerificationToken {
   identifier String
   token      String   @unique
   expires    DateTime
+
   @@unique([identifier, token])
 }
 
@@ -74,9 +77,9 @@ model Site {
   feedbacks       Feedback[]
   customHead      String?
   homePage        String?
-  announcement    String?
   navbar          String?
-  shikiTheme      String?
+  announcement    String?
+  shikiTheme      String     @default("one-dark-pro")
   blogs           Blog[]
 }
 
@@ -84,11 +87,10 @@ model Feedback {
   id        String   @id @default(cuid())
   createdAt DateTime @default(now())
   siteId    String
-  site      Site    @relation(fields: [siteId], references: [id], onDelete: Cascade)
+  site      Site     @relation(fields: [siteId], references: [id], onDelete: Cascade)
   feedback  String
   stars     Int
   sentBy    String?
-
 }
 
 model Blog {
@@ -96,12 +98,11 @@ model Blog {
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
   siteId      String
-  site        Site    @relation(fields: [siteId], references: [id], onDelete: Cascade)
+  site        Site     @relation(fields: [siteId], references: [id], onDelete: Cascade)
   title       String
   description String
   ogImageUrl  String
   content     String
   postedBy    String
   published   Boolean  @default(false)
-
 }
