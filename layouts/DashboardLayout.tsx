@@ -6,7 +6,6 @@ import clsx from 'clsx'
 import { useSession } from 'next-auth/react'
 import Logo from '@/components/Logo'
 import { useRouter } from 'next/router'
-import ReactMarkdown from 'react-markdown'
 
 type ActiveTab =
   | 'overview'
