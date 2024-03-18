@@ -8,7 +8,7 @@ const handler = async (
   res: NextApiResponse,
   user: User
 ) => {
-  const userId = user.id
+  const userId = user?.id
 
   const site = await prisma.site.findMany({
     where: {
