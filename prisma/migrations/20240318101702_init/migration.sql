@@ -48,11 +48,64 @@ CREATE TABLE "VerificationToken" (
     "expires" TIMESTAMP(3) NOT NULL
 );
 
+-- CreateTable
+CREATE TABLE "Site" (
+    "id" TEXT NOT NULL,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
+    "createdBy" TEXT NOT NULL,
+    "repoLink" TEXT NOT NULL,
+    "siteName" TEXT NOT NULL,
+    "siteDescription" TEXT NOT NULL,
+    "ogImageUrl" TEXT NOT NULL,
+    "web3formsKey" TEXT,
+    "customHead" TEXT,
+    "homePage" TEXT,
+    "navbar" TEXT,
+    "shikiTheme" TEXT,
+
+    CONSTRAINT "Site_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
+CREATE TABLE "Feedback" (
+    "id" TEXT NOT NULL,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "siteId" TEXT NOT NULL,
+    "feedback" TEXT NOT NULL,
+    "stars" INTEGER NOT NULL,
+    "sentBy" TEXT,
+
+    CONSTRAINT "Feedback_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
+CREATE TABLE "Blog" (
+    "id" TEXT NOT NULL,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
+    "siteId" TEXT NOT NULL,
+    "title" TEXT NOT NULL,
+    "description" TEXT NOT NULL,
+    "ogImageUrl" TEXT NOT NULL,
+    "content" TEXT NOT NULL,
+    "postedBy" TEXT NOT NULL,
+    "published" BOOLEAN NOT NULL DEFAULT false,
+
+    CONSTRAINT "Blog_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateIndex
+CREATE INDEX "Account_userId_idx" ON "Account"("userId");
+
 -- CreateIndex
 CREATE UNIQUE INDEX "Account_provider_providerAccountId_key" ON "Account"("provider", "providerAccountId");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "Session_sessionToken_key" ON "Session"("sessionToken");
+
+-- CreateIndex
+CREATE INDEX "Session_userId_idx" ON "Session"("userId");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "User_email_key" ON "User"("email");
@@ -62,3 +115,9 @@ CREATE UNIQUE INDEX "VerificationToken_token_key" ON "VerificationToken"("token"
 
 -- CreateIndex
 CREATE UNIQUE INDEX "VerificationToken_identifier_token_key" ON "VerificationToken"("identifier", "token");
+
+-- CreateIndex
+CREATE INDEX "Feedback_siteId_idx" ON "Feedback"("siteId");
+
+-- CreateIndex
+CREATE INDEX "Blog_siteId_idx" ON "Blog"("siteId");
