@@ -5,7 +5,7 @@ const Logo: React.FC<{ href?: string }> = ({ href }) => {
     <>
       <Link href={href || '/'}>
         <a className='focus:outline-none'>
-          <svg
+        <svg
             className='logo'
             height={128 / 2}
             width={128 / 2}
