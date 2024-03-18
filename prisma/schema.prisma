@@ -31,7 +31,6 @@ model Account {
   oauth_token              String?
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
   @@unique([provider, providerAccountId])
-  @@index([userId])
 }
 
 model Session {
@@ -41,7 +40,6 @@ model Session {
   expires      DateTime
   user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 
-  @@index([userId])
 }
 
 model User {
@@ -76,6 +74,7 @@ model Site {
   feedbacks       Feedback[]
   customHead      String?
   homePage        String?
+  announcement    String?
   navbar          String?
   shikiTheme      String?
   blogs           Blog[]
@@ -90,7 +89,6 @@ model Feedback {
   stars     Int
   sentBy    String?
 
-  @@index([siteId])
 }
 
 model Blog {
@@ -106,5 +104,4 @@ model Blog {
   postedBy    String
   published   Boolean  @default(false)
 
-  @@index([siteId])
 }
