@@ -5,7 +5,7 @@ const SnippetInjection = () => {
     <DashboardLayout
       title='Snippet Injection'
       subtitle='# Inject custom code such as analytics, popup menus, CSS stylesheets, custom fonts, etc.'
-      active='snippet'>
+      active='snippet-injection'>
       Snippet Injection
     </DashboardLayout>
   )

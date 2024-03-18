@@ -10,7 +10,7 @@ import ReactMarkdown from 'react-markdown'
 
 type ActiveTab =
   | 'overview'
-  | 'snippet'
+  | 'snippet-injection'
   | 'blog'
   | 'feedbacks'
   | 'integrations'
@@ -41,8 +41,8 @@ const DashboardLayout: React.FC<{
     },
     {
       name: 'Snippet injection',
-      href: `/dashboard/${siteId}/snippet`,
-      active: 'snippet',
+      href: `/dashboard/${siteId}/snippet-injection`,
+      active: 'snippet-injection',
     },
     {
       name: 'Blog',
@@ -121,7 +121,7 @@ const DashboardLayout: React.FC<{
             <div className='mt-24 pl-16'>
               <Heading1>{title}</Heading1>
               <p className='text-light mb-16 mt-5 text-lg'>
-                <Markdown>{subtitle}</Markdown>
+                <Markdown text={subtitle} />
               </p>
               {props.children}
             </div>
