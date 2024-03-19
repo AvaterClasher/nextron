@@ -7,12 +7,11 @@ import {
 } from '@/components/ui/Menu'
 import { Heading3, TextSmall } from '@/components/ui/Typography'
 import DashboardLayout from '@/layouts/DashboardLayout'
-import shikiThemes from '@/lib/shikiThemes'
+// import shikiThemes from '@/lib/shikiThemes'
 import { Site } from '@prisma/client'
 import axios from 'axios'
 import { useRouter } from 'next/router'
 import { useState } from 'react'
-import { ChevronDown } from 'react-feather'
 import useSWR from 'swr'
 
 const Settings = () => {
@@ -24,73 +23,17 @@ const Settings = () => {
   const [isCodeblocksThemeSelectMenuOpen, setisCodeblocksThemeSelectMenuOpen] =
     useState<boolean>(false)
 
-  const [theme, setTheme] = useState(data?.shikiTheme)
+  // const [theme, setTheme] = useState(data?.shikiTheme)
 
   return (
     <DashboardLayout
       title='Settings'
       subtitle='Settings that control the behavior of the documentation website'
-      active='settings'
-    >
+      active='settings'>
       <div>
-        <div>
-          <Card
-            title='Code blocks theme'
-            subtitle='Select the theme you want for code blocks on the docs site'
-          >
-            <MenuRoot
-              isOpen={isCodeblocksThemeSelectMenuOpen}
-              setIsOpen={setisCodeblocksThemeSelectMenuOpen}
-            >
-              <MenuTrigger>
-                <Button
-                  noInvert
-                  className='flex w-full items-center justify-between capitalize'
-                  onClick={() => {
-                    setisCodeblocksThemeSelectMenuOpen(
-                      !isCodeblocksThemeSelectMenuOpen
-                    )
-                  }}
-                >
-                  <p>{theme?.replace(/\-/g, ' ') || 'Atom One Dark'}</p>
-                  <div className='ml-5 block'>
-                    <ChevronDown size={15} />
-                  </div>
-                </Button>
-              </MenuTrigger>
-              <MenuContent
-                isOpen={isCodeblocksThemeSelectMenuOpen}
-                side='bottom'
-              >
-                {shikiThemes.map((theme) => {
-                  return (
-                    <MenuItem
-                      key={theme}
-                      callBack={() => {
-                        setisCodeblocksThemeSelectMenuOpen(false)
-                        setTheme(theme)
-                        axios
-                          .post('/api/update/shiki-theme', {
-                            shikiTheme: theme,
-                            siteId: data?.id,
-                          })
-                          .then(({ data }) => {
-                            mutate(data)
-                          })
-                      }}
-                    >
-                      <p className='capitalize'>{theme.replace(/\-/g, ' ')}</p>
-                    </MenuItem>
-                  )
-                })}
-              </MenuContent>
-            </MenuRoot>
-          </Card>
-        </div>
         <Card
           title='Danger'
-          subtitle='Delete your site permanently, this cannot be reversed'
-        >
+          subtitle='Delete your site permanently, this cannot be reversed'>
           <Button className='font-bold !text-red-400' noInvert>
             Delete {data?.siteName}
           </Button>
