@@ -26,6 +26,8 @@ export default Page
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const slug = params?.slug as string
 
+  console.log(slug)
+
   const siteData = await prisma.site.findUnique({
     where: {
       siteSlug: slug,
@@ -40,6 +42,9 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
   // get repo owner and repo name from siteData?.repoUrl
   const repoUrl = siteData?.repoLink as string
+
+  console.log(repoUrl)
+
   const repoLinkData = parseGitHubUrl(repoUrl)
 
   console.log(repoLinkData)
