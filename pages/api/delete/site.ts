@@ -3,17 +3,13 @@ import prisma from '@/utils/prisma'
 import type { NextApiRequest, NextApiResponse } from 'next'
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
-  const { siteId, announcement } = req.body
+  const { siteId } = req.body
 
-  const site = await prisma.site.update({
+  const site = await prisma.site.delete({
     where: {
       id: siteId,
     },
-    data: {
-      announcement: announcement,
-    },
   })
-
   console.log(site)
 
   res.json(site)

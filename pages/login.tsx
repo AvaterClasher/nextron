@@ -17,7 +17,8 @@ const Login = () => {
               callbackUrl: `${router.query.redirectTo || '/dashboard'}`,
             })
           }
-          className='text-invert mt-10 rounded px-5 py-2 text-lg hover:opacity-90'>
+          className='text-invert mt-10 rounded px-5 py-2 text-lg hover:opacity-90'
+        >
           <GitHub className='mr-2 inline-block' /> Sign in with GitHub
         </button>
       </div>

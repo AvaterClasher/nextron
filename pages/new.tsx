@@ -4,7 +4,7 @@ import { Input, Textarea } from '@/components/ui/Input'
 import { Heading1, TextSmall } from '@/components/ui/Typography'
 import ProtectedRoute from '@/lib/ProtectedRoute'
 import { useForm } from 'react-hook-form'
-import type { NewSite } from 'types/types'
+import { NewSite } from 'types/types'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { newSiteSchema } from '@/lib/schemas/newSiteSchema'
 import { DevTool } from '@hookform/devtools'
@@ -139,7 +139,8 @@ const NewSite = () => {
                         getValues().siteName
                       )}`
                     )
-                  }}>
+                  }}
+                >
                   Click here to auto-generate one from title.
                 </span>
               </TextSmall>

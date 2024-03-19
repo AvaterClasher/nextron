@@ -14,7 +14,8 @@ export const CustomLink: React.FC<
           noInvert === true &&
             'text-no-invert border !border-slate-400 hover:bg-slate-100 dark:!border-slate-500 dark:hover:bg-slate-800',
           props?.className
-        )}>
+        )}
+      >
         {props.children}
       </a>
     </Link>

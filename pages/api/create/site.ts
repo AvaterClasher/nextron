@@ -1,7 +1,7 @@
+import requireSession from '@/lib/require-session'
 import prisma from '@/utils/prisma'
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { getSession } from 'next-auth/react'
-import requireSession from '@/lib/require-session'
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const { ogImageUrl, repoLink, siteName, siteDescription, siteSlug } = req.body
@@ -24,4 +24,4 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   res.json(site)
 }
 
-export default requireSession(handler);
+export default requireSession(handler)

@@ -5,7 +5,8 @@ const Navbar = () => {
     <DashboardLayout
       title='Navbar'
       subtitle='Customize the navbar of the documentation website'
-      active='navbar'>
+      active='navbar'
+    >
       Navbar
     </DashboardLayout>
   )

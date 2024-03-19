@@ -1,10 +1,10 @@
+import Logo from '@/components/Logo'
 import ProfileDropdown from '@/components/ProfileDropdown'
 import { CustomLink } from '@/components/ui/Link'
 import { Heading1, Markdown } from '@/components/ui/Typography'
 import ProtectedRoute from '@/lib/ProtectedRoute'
 import clsx from 'clsx'
 import { useSession } from 'next-auth/react'
-import Logo from '@/components/Logo'
 import { useRouter } from 'next/router'
 
 type ActiveTab =
@@ -91,7 +91,8 @@ const DashboardLayout: React.FC<{
                             'border-none',
                             active === link.active &&
                               '!bg-slate-100 font-semibold dark:!bg-slate-700 dark:!text-white'
-                          )}>
+                          )}
+                        >
                           {link.name}
                         </CustomLink>
                       </li>
@@ -104,7 +105,8 @@ const DashboardLayout: React.FC<{
                       <CustomLink
                         href='/dashboard'
                         noInvert
-                        className='mt-3 block border-none !bg-slate-100 px-5 py-3 text-sm text-slate-400 hover:font-bold dark:!bg-slate-900'>
+                        className='mt-3 block border-none !bg-slate-100 py-3 px-5 text-sm text-slate-400 hover:font-bold dark:!bg-slate-900'
+                      >
                         {'<-'} Go back
                       </CustomLink>
                     </div>
@@ -119,7 +121,7 @@ const DashboardLayout: React.FC<{
           <main role='main' className='w-full px-2 pt-1 sm:w-4/5'>
             <div className='mt-24 pl-16'>
               <Heading1>{title}</Heading1>
-              <p className='text-light mb-16 mt-5 text-lg'>
+              <p className='text-light mt-5 mb-16 text-lg'>
                 <Markdown text={subtitle} />
               </p>
               {props.children}

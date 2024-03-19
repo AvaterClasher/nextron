@@ -3,14 +3,14 @@ import prisma from '@/utils/prisma'
 import type { NextApiRequest, NextApiResponse } from 'next'
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
-  const { siteId, announcement } = req.body
+  const { siteId, shikiTheme } = req.body
 
   const site = await prisma.site.update({
     where: {
       id: siteId,
     },
     data: {
-      announcement: announcement,
+      shikiTheme,
     },
   })
 

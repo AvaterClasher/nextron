@@ -5,7 +5,8 @@ const Feedbacks = () => {
     <DashboardLayout
       title='Feedbacks'
       subtitle='Feedbacks that people submitted through the documentation website'
-      active='feedbacks'>
+      active='feedbacks'
+    >
       Feedbacks
     </DashboardLayout>
   )

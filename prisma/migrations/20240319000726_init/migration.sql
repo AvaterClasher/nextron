@@ -55,6 +55,7 @@ CREATE TABLE "Site" (
     "updatedAt" TIMESTAMP(3) NOT NULL,
     "createdBy" TEXT NOT NULL,
     "repoLink" TEXT NOT NULL,
+    "siteSlug" TEXT NOT NULL,
     "siteName" TEXT NOT NULL,
     "siteDescription" TEXT NOT NULL,
     "ogImageUrl" TEXT NOT NULL,
@@ -62,7 +63,8 @@ CREATE TABLE "Site" (
     "customHead" TEXT,
     "homePage" TEXT,
     "navbar" TEXT,
-    "shikiTheme" TEXT,
+    "announcement" TEXT,
+    "shikiTheme" TEXT NOT NULL DEFAULT 'one-dark-pro',
 
     CONSTRAINT "Site_pkey" PRIMARY KEY ("id")
 );
@@ -96,16 +98,10 @@ CREATE TABLE "Blog" (
 );
 
 -- CreateIndex
-CREATE INDEX "Account_userId_idx" ON "Account"("userId");
-
--- CreateIndex
 CREATE UNIQUE INDEX "Account_provider_providerAccountId_key" ON "Account"("provider", "providerAccountId");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "Session_sessionToken_key" ON "Session"("sessionToken");
-
--- CreateIndex
-CREATE INDEX "Session_userId_idx" ON "Session"("userId");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "User_email_key" ON "User"("email");
@@ -117,7 +113,4 @@ CREATE UNIQUE INDEX "VerificationToken_token_key" ON "VerificationToken"("token"
 CREATE UNIQUE INDEX "VerificationToken_identifier_token_key" ON "VerificationToken"("identifier", "token");
 
 -- CreateIndex
-CREATE INDEX "Feedback_siteId_idx" ON "Feedback"("siteId");
-
--- CreateIndex
-CREATE INDEX "Blog_siteId_idx" ON "Blog"("siteId");
+CREATE UNIQUE INDEX "Site_siteSlug_key" ON "Site"("siteSlug");

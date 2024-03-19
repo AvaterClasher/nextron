@@ -42,7 +42,8 @@ const ProfileDropdown = () => {
           <MenuSeparator />
           <MenuItem
             callBack={signOut}
-            className='text-red-500 hover:underline focus:underline'>
+            className='text-red-500 hover:underline focus:underline'
+          >
             Logout
           </MenuItem>
         </MenuContent>

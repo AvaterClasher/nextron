@@ -2,16 +2,12 @@ import NextAuth from 'next-auth'
 import GitHubProvider from 'next-auth/providers/github'
 import { PrismaAdapter } from '@next-auth/prisma-adapter'
 import prisma from '@/utils/prisma'
-import { Stream } from 'stream'
 
 export default NextAuth({
   providers: [
     GitHubProvider({
-      clientId: process.env.GITHUB_CLIENT_ID as string,
-      clientSecret: process.env.GITHUB_CLIENT_SECRET as string,
-      httpOptions: {
-        timeout: 10000,
-      },
+      clientId: process.env.GITHUB_CLIENT_ID,
+      clientSecret: process.env.GITHUB_CLIENT_SECRET,
       profile(profile) {
         return {
           id: profile.id.toString(),
@@ -20,6 +16,9 @@ export default NextAuth({
           email: profile.email,
           image: profile.avatar_url,
         }
+      },
+      httpOptions: {
+        timeout: 10000,
       },
     }),
   ],
@@ -35,7 +34,7 @@ export default NextAuth({
       user: {
         ...session.user,
         id: user.id,
-        username: user.name,
+        username: user.username,
       },
     }),
   },

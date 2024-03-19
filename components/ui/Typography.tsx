@@ -26,7 +26,7 @@ export const Heading3: React.FC<{ className?: string }> = ({
   ...props
 }) => {
   return (
-    <h3 className={clsx('text-4xl font-bold', className)}>{props.children}</h3>
+    <h3 className={clsx('text-xl font-bold', className)}>{props.children}</h3>
   )
 }
 
@@ -45,6 +45,7 @@ export const Markdown: React.FC<{ className?: string; text?: string }> = ({
   return (
     <p
       className={className}
-      dangerouslySetInnerHTML={{ __html: snarkdown(text || '') }}></p>
+      dangerouslySetInnerHTML={{ __html: snarkdown(text || '') }}
+    ></p>
   )
 }

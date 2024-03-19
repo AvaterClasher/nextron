@@ -12,7 +12,8 @@ const Avatar: React.FC<{ img: string; fallBack: string }> = ({
       />
       <RadixAvatar.Fallback
         delayMs={600}
-        className='flex h-full w-full cursor-default items-center justify-center rounded-full bg-blue-500 p-3 text-xs uppercase leading-none'>
+        className='flex h-full w-full cursor-default items-center justify-center rounded-full bg-blue-500 p-3 text-xs uppercase leading-none'
+      >
         {fallBack?.split(' ')[0]?.substring(0, 2) || fallBack?.substring(0, 2)}
       </RadixAvatar.Fallback>
     </RadixAvatar.Root>

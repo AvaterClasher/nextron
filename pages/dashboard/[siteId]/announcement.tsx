@@ -1,7 +1,7 @@
-import DashboardLayout from '@/layouts/DashboardLayout'
 import { Button } from '@/components/ui/Button'
 import { Input } from '@/components/ui/Input'
 import { TextSmall } from '@/components/ui/Typography'
+import DashboardLayout from '@/layouts/DashboardLayout'
 import { Site } from '@prisma/client'
 import axios from 'axios'
 import { useRouter } from 'next/router'
@@ -22,11 +22,13 @@ const Announcement = () => {
   const [announcementLink, setAnnouncementLink] = useState(
     data?.announcement?.split('|||')[1]
   )
+
   return (
     <DashboardLayout
       title='Announcement'
       subtitle='This text shows up as banner on the top of the website. You can use it for announcing new releases or other milestones'
-      active='announcement'>
+      active='announcement'
+    >
       <form>
         <div>
           <TextSmall>Announcement text</TextSmall>
@@ -36,7 +38,7 @@ const Announcement = () => {
               setAnnouncementText(e.target.value)
             }}
             value={announcementText}
-            placeholder='Version 3 of Hyperdocs is released 🎉 ->'
+            placeholder='Version 1 of Nextron is released 🎉 ->'
             className='inline-block w-full max-w-3xl'
           />
         </div>
@@ -49,7 +51,7 @@ const Announcement = () => {
             }}
             type='url'
             value={announcementLink}
-            placeholder='https://hyperdocs.tk/blog/version-3'
+            placeholder='https://nextron.netlify.app/blog/version-3'
             className='inline-block w-full max-w-3xl'
           />
         </div>
@@ -71,7 +73,8 @@ const Announcement = () => {
                 success: 'Updated successfully!',
                 error: 'Failed to update!',
               })
-            }}>
+            }}
+          >
             Save
           </Button>
         </div>

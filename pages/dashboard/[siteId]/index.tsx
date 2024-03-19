@@ -1,8 +1,8 @@
+import { CustomLink } from '@/components/ui/Link'
+import { Markdown, TextSmall } from '@/components/ui/Typography'
 import DashboardLayout from '@/layouts/DashboardLayout'
 import { Site } from '@prisma/client'
 import { useRouter } from 'next/router'
-import { CustomLink } from '@/components/ui/Link'
-import { Markdown, TextSmall } from '@/components/ui/Typography'
 import useSWR from 'swr'
 
 const Index = () => {
@@ -15,22 +15,25 @@ const Index = () => {
     <DashboardLayout
       active='overview'
       title='Overview'
-      subtitle={`A brief overview and status of **${data?.siteName}**`}>
+      subtitle={`A brief overview and status of **${data?.siteName}**`}
+    >
       <div>
         <CustomLink
           className='mr-2 inline'
-          href={`https://nextron.netlify.app/${data?.siteSlug}`}
+          href={`http://localhost:3000/${data?.siteSlug}`}
           target='_blank'
           noInvert
-          rel='noopener noreferrer'>
+          rel='noopener noreferrer'
+        >
           Visit site
         </CustomLink>
         <CustomLink
           className='mr-2 inline'
           noInvert
-          href={`https://pagespeed.web.dev/report/?url=https://nextron.netlify.app/${data?.siteSlug}`}
+          href={`https://pagespeed.web.dev/report/?url=http://localhost:3000/${data?.siteSlug}`}
           target='_blank'
-          rel='noopener noreferrer'>
+          rel='noopener noreferrer'
+        >
           View Lighthouse score
         </CustomLink>
         <CustomLink
@@ -38,7 +41,8 @@ const Index = () => {
           noInvert
           href={data?.repoLink}
           target='_blank'
-          rel='noopener noreferrer'>
+          rel='noopener noreferrer'
+        >
           View repository on GitHub
         </CustomLink>
       </div>

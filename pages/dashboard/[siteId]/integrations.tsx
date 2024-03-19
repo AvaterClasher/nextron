@@ -5,7 +5,8 @@ const Integrations = () => {
     <DashboardLayout
       title='Integrations'
       subtitle='Integrations that integrate with the documentation website to provide additional functionality'
-      active='integrations'>
+      active='integrations'
+    >
       Integrations
     </DashboardLayout>
   )

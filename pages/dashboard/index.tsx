@@ -1,17 +1,17 @@
 import DashboardNav from '@/components/DashboardNav'
-import { CustomLink } from '@/components/ui/Link'
 import { Input } from '@/components/ui/Input'
-import ProtectedRoute from '@/lib/ProtectedRoute'
-import { useSession } from 'next-auth/react'
+import { CustomLink } from '@/components/ui/Link'
 import Loader from '@/components/ui/Loader'
+import ProtectedRoute from '@/lib/ProtectedRoute'
+import { Site } from '@prisma/client'
 import { useEffect, useState } from 'react'
 import { Plus } from 'react-feather'
-import { Site } from '@prisma/client'
 import useSWR from 'swr'
 import truncate from 'lodash.truncate'
 
 const Dashboard = () => {
   const { data, error } = useSWR<Site[]>('/api/get/dashboard-data')
+
   const [searchQuery, setSearchQuery] = useState<string>('')
 
   const results =
@@ -35,7 +35,9 @@ const Dashboard = () => {
     return () => {
       window.removeEventListener('keydown', handleKeyDown)
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
+
   return (
     <ProtectedRoute>
       <DashboardNav />
@@ -50,7 +52,7 @@ const Dashboard = () => {
             id='search-input'
             className='w-full max-w-[10/12]'
           />
-          <CustomLink href='/new' className='!ml-5 block w-52 p-0 text-center'>
+          <CustomLink href='/new' className='ml-5 block w-52 p-0 text-center'>
             <Plus className='relative -top-px inline-block' />{' '}
             <span className='hidden md:inline-block'>New Project</span>
           </CustomLink>
@@ -65,7 +67,8 @@ const Dashboard = () => {
                     <CustomLink
                       href={`/dashboard/${site.id}`}
                       noInvert
-                      className='h-full !p-5 transition-all hover:scale-[1.01] focus:scale-[1.01]'>
+                      className='h-full !p-5 transition-all hover:scale-[1.01] focus:scale-[1.01]'
+                    >
                       <h3 className='text-xl font-bold capitalize'>
                         {site.siteName}
                       </h3>

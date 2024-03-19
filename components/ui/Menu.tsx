@@ -23,19 +23,21 @@ export const MenuTrigger: React.FC = (props) => {
   )
 }
 
-export const MenuContent: React.FC<{ isOpen: boolean }> = ({
-  isOpen,
-  ...props
-}) => {
+export const MenuContent: React.FC<{
+  isOpen: boolean
+  side?: 'right' | 'top' | 'bottom' | 'left'
+}> = ({ isOpen, side, ...props }) => {
   return (
     <AnimatePresence>
       {isOpen && (
         <RadixMenu.Content
           sideOffset={10}
           asChild
+          side={side || 'bottom'}
           forceMount
           align='start'
-          className='g-white block !w-full !max-w-lg rounded border border-slate-200 shadow-lg dark:border-slate-600 dark:bg-black'>
+          className='block max-h-80 !w-full !max-w-lg overflow-y-scroll rounded border border-slate-200 bg-white shadow-lg dark:border-slate-600 dark:bg-black'
+        >
           <motion.div
             initial={{
               opacity: 0,
@@ -54,7 +56,8 @@ export const MenuContent: React.FC<{ isOpen: boolean }> = ({
             transition={{
               type: 'spring',
               duration: 0.2,
-            }}>
+            }}
+          >
             {props.children}
           </motion.div>
         </RadixMenu.Content>
@@ -82,7 +85,8 @@ export const MenuItem: React.FC<{
         className={clsx(
           'cursor-pointer px-5 py-2 pr-10 hover:bg-slate-100 focus:bg-slate-100 focus:outline-none hover:dark:bg-slate-800 focus:dark:bg-slate-800',
           className
-        )}>
+        )}
+      >
         {link && (
           <Link href={link}>
             <a className='w-full'>{props.children}</a>
