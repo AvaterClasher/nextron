@@ -8,7 +8,10 @@ import {
   MenuRoot,
   MenuSeparator,
   MenuTrigger,
+  MenuTriggerItem,
 } from './ui/Menu'
+
+import { useTheme } from 'next-themes'
 
 const ProfileDropdown = () => {
   const { data } = useSession()
@@ -18,7 +21,11 @@ const ProfileDropdown = () => {
     data?.user?.email,
   ]
 
+  const { setTheme } = useTheme()
+
   const [isOpen, setIsOpen] = useState<boolean>(false)
+
+  const [isSubMenuOpen, setIsSubMenuOpen] = useState<boolean>(false)
 
   return (
     <div>
@@ -39,11 +46,27 @@ const ProfileDropdown = () => {
           <MenuItem link='/themes'>Themes</MenuItem>
           <MenuItem link='/showcase'>Showcase</MenuItem>
           <MenuItem link='/support'>Support</MenuItem>
+          <MenuRoot isOpen={isSubMenuOpen} setIsOpen={setIsSubMenuOpen}>
+            <MenuTriggerItem>Change theme</MenuTriggerItem>
+            <MenuContent isOpen={isSubMenuOpen}>
+              <MenuItem
+                callBack={() => {
+                  setTheme('dark')
+                }}>
+                Dark
+              </MenuItem>
+              <MenuItem
+                callBack={() => {
+                  setTheme('light')
+                }}>
+                Light
+              </MenuItem>
+            </MenuContent>
+          </MenuRoot>
           <MenuSeparator />
           <MenuItem
             callBack={signOut}
-            className='text-red-500 hover:underline focus:underline'
-          >
+            className='text-red-500 hover:underline focus:underline'>
             Logout
           </MenuItem>
         </MenuContent>

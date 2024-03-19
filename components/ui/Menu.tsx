@@ -36,8 +36,7 @@ export const MenuContent: React.FC<{
           side={side || 'bottom'}
           forceMount
           align='start'
-          className='block max-h-80 !w-full !max-w-lg overflow-y-scroll rounded border border-slate-200 bg-white shadow-lg dark:border-slate-600 dark:bg-black'
-        >
+          className='block max-h-96 !w-full !max-w-lg overflow-y-scroll rounded border border-slate-200 bg-white shadow-lg dark:border-slate-600 dark:bg-black'>
           <motion.div
             initial={{
               opacity: 0,
@@ -56,8 +55,7 @@ export const MenuContent: React.FC<{
             transition={{
               type: 'spring',
               duration: 0.2,
-            }}
-          >
+            }}>
             {props.children}
           </motion.div>
         </RadixMenu.Content>
@@ -85,8 +83,7 @@ export const MenuItem: React.FC<{
         className={clsx(
           'cursor-pointer px-5 py-2 pr-10 hover:bg-slate-100 focus:bg-slate-100 focus:outline-none hover:dark:bg-slate-800 focus:dark:bg-slate-800',
           className
-        )}
-      >
+        )}>
         {link && (
           <Link href={link}>
             <a className='w-full'>{props.children}</a>
@@ -94,6 +91,35 @@ export const MenuItem: React.FC<{
         )}
         {!link && props.children}
       </RadixMenu.Item>
+    </>
+  )
+}
+
+export const MenuTriggerItem: React.FC<{
+  className?: string
+  link?: string
+}> = ({ className, link, ...props }) => {
+  const router = usePrefetch([link || '/dashboard'])
+  const r = (url?: string) => {
+    return () => {
+      router.push(url || '/dashboard')
+    }
+  }
+
+  return (
+    <>
+      <RadixMenu.TriggerItem
+        className={clsx(
+          'cursor-pointer px-5 py-2 pr-10 hover:bg-slate-100 focus:bg-slate-100 focus:outline-none hover:dark:bg-slate-800 focus:dark:bg-slate-800',
+          className
+        )}>
+        {link && (
+          <Link href={link}>
+            <a className='w-full'>{props.children}</a>
+          </Link>
+        )}
+        {!link && props.children}
+      </RadixMenu.TriggerItem>
     </>
   )
 }
