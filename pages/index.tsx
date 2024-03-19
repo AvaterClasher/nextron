@@ -1,11 +1,9 @@
 import Nav from '@/components/Nav'
-import { useTheme } from 'next-themes'
 import type { NextPage } from 'next'
 import { RoughNotation } from 'react-rough-notation'
 import Link from 'next/link'
 
 const Home: NextPage = () => {
-  const { setTheme, theme } = useTheme()
   return (
     <div>
       <Nav />
@@ -32,8 +30,7 @@ const Home: NextPage = () => {
             animationDuration={2000}
             color='rgb(129 140 248)'
             animate
-            show
-          >
+            show>
             <span>auto-updating</span>
           </RoughNotation>{' '}
           <br /> documentation website up in less than 30 seconds
@@ -50,11 +47,6 @@ const Home: NextPage = () => {
           </Link>
         </div>
       </div>
-
-      <button onClick={() => setTheme(theme == 'dark' ? 'light' : 'dark')}>
-        Toggle theme
-      </button>
-      <p>{theme}</p>
     </div>
   )
 }
