@@ -105,7 +105,7 @@ const DashboardLayout: React.FC<{
                       <CustomLink
                         href='/dashboard'
                         noInvert
-                        className='mt-3 block border-none !bg-slate-100 py-3 px-5 text-sm text-slate-400 hover:font-bold dark:!bg-slate-900'
+                        className='mt-3 block border-none !bg-slate-100 py-3 px-5 text-sm text-slate-400 hover:font-bold dark:!bg-slate-900 mb-[2px] rounded-none'
                       >
                         {'<-'} Go back
                       </CustomLink>

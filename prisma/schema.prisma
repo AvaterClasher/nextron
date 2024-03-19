@@ -79,6 +79,7 @@ model Site {
   homePage        String?
   navbar          String?
   announcement    String?
+  gitHubAccessToken String?
   blogs           Blog[]
 }
 
