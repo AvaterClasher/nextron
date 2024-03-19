@@ -20,11 +20,6 @@ const Settings = () => {
     `/api/get/site/?siteId=${router.query.siteId}`
   )
 
-  const [isCodeblocksThemeSelectMenuOpen, setisCodeblocksThemeSelectMenuOpen] =
-    useState<boolean>(false)
-
-  // const [theme, setTheme] = useState(data?.shikiTheme)
-
   return (
     <DashboardLayout
       title='Settings'

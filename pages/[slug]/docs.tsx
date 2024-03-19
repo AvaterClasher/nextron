@@ -93,10 +93,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     })
   )
 
-  const filesContentsBundled = await bundleMdxContent(
-    filesContents.join('\n'),
-    siteData?.shikiTheme
-  )
+  const filesContentsBundled = await bundleMdxContent(filesContents.join('\n'))
 
   return {
     props: {
