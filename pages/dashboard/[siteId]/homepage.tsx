@@ -14,7 +14,8 @@ const Blog = () => {
     <DashboardLayout
       title='Homepage'
       subtitle={`Create the homepage of your documentation with pre-made components. Want a new component? Just open a new issue [here](https://github.com/AvaterClasher/nextron/issues/new)`}
-      active='homepage'>
+      active='homepage'
+    >
       Homepage
     </DashboardLayout>
   )
