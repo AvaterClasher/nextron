@@ -28,7 +28,7 @@ const Feedbacks = () => {
       active='feedbacks'>
       <div className='max-w-4xl'>
         <div>
-          {site?.web3formsKey && (
+          {!site?.web3formsKey && (
             <div className='inline-block rounded-md bg-green-300 p-5 dark:bg-green-800'>
               <Markdown text='Make sure you have set up your [Web3forms](https://web3forms.com) API key in settings to recieve an email whenever someone submits a form.' />
             </div>
