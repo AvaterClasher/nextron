@@ -10,6 +10,7 @@ import getFileContent from '@/utils/getFile'
 import { Remarkable } from 'remarkable'
 // @ts-ignore
 import mdToc from 'markdown-toc'
+import DocsLayout from '@/layouts/DocsLayout'
 // @ts-ignore
 const Page = ({ content, tocHtml, navLinks, navCta, logo, sidebar, slug }) => {
   const Component = useMemo(() => getMDXComponent(content), [content])
@@ -25,8 +26,8 @@ const Page = ({ content, tocHtml, navLinks, navCta, logo, sidebar, slug }) => {
         <div className='sticky top-0'>
           <DocsNav links={navLinks} navbarCta={navCta} logo={logo} />
         </div>
-        <div className='max-w-8xl mx-auto px-4 sm:px-6 md:px-8'>
-          <div className='fixed inset-0 top-[3.8125rem] left-[max(0px,calc(50%-45rem))] right-auto z-20 hidden w-64 overflow-y-auto border-r-2 border-r-slate-200 px-7 pb-10 dark:border-slate-700 lg:block'>
+        <DocsLayout
+          LeftSidebarContent={() => (
             <ul className='mt-10 space-y-4'>
               {sidebar.map((file: string) => {
                 return (
@@ -40,26 +41,19 @@ const Page = ({ content, tocHtml, navLinks, navCta, logo, sidebar, slug }) => {
                 )
               })}
             </ul>
-          </div>
-          <div className='lg:pl-72'>
-            <div className='mx-auto max-w-3xl pt-10 xl:ml-0 xl:mr-[15.5rem] xl:max-w-none xl:pr-16'>
-              <main className='relative z-20 mt-8'>
-                <div className='prose-lg prose-slate px-3 text-slate-800 prose-headings:scroll-mt-20 prose-headings:font-bold prose-headings:text-slate-800 prose-a:rounded-sm prose-a:p-[2px] prose-a:text-blue-500 hover:prose-a:bg-blue-100 prose-blockquote:border-l-4 prose-blockquote:border-slate-600 prose-blockquote:py-1 prose-pre:overflow-x-scroll prose-pre:bg-[#282C34] prose-ol:list-decimal prose-ul:list-disc dark:prose-invert dark:text-slate-200 dark:prose-headings:text-slate-50 dark:prose-a:text-blue-400 dark:hover:prose-a:bg-slate-700 dark:prose-hr:divide-slate-600'>
-                  <Component />
-                </div>
-              </main>
-              <footer className='mt-12 text-sm leading-6'>Footer</footer>
-              <div className='fixed top-[3.8125rem] bottom-0 right-[max(0px,calc(50%-45rem))] z-20 hidden w-[19.5rem] overflow-y-auto py-10 px-8 xl:block'>
-                <div className='sticky max-h-[calc(var(--vh)-4rem)] overflow-y-auto'>
-                  <p className='mb-8 text-xs uppercase'>On this page</p>
-                  <ul
-                    dangerouslySetInnerHTML={{ __html: tocHtml }}
-                    className='prose space-y-4 text-opacity-50 prose-li:underline-offset-4 dark:prose-invert'></ul>
-                </div>
-              </div>
+          )}
+          RightSidebarContent={() => (
+            <div>
+              <p className='mb-8 text-xs uppercase'>On this page</p>
+              <ul
+                dangerouslySetInnerHTML={{ __html: tocHtml }}
+                className='prose space-y-4 text-opacity-50 prose-li:underline-offset-4 dark:prose-invert'></ul>
             </div>
+          )}>
+          <div className='prose-lg prose-slate px-3 text-slate-800 prose-headings:scroll-mt-20 prose-headings:font-bold prose-headings:text-slate-800 prose-a:rounded-sm prose-a:p-[2px] prose-a:text-blue-500 hover:prose-a:bg-blue-100 prose-blockquote:border-l-4 prose-blockquote:border-slate-600 prose-blockquote:py-1 prose-pre:overflow-x-scroll prose-pre:bg-[#282C34] prose-ol:list-decimal prose-ul:list-disc dark:prose-invert dark:text-slate-200 dark:prose-headings:text-slate-50 dark:prose-a:text-blue-400 dark:hover:prose-a:bg-slate-700 dark:prose-hr:divide-slate-600'>
+            <Component />
           </div>
-        </div>
+        </DocsLayout>
       </div>
     </div>
   )
