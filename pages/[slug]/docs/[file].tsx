@@ -13,6 +13,8 @@ import mdToc from 'markdown-toc'
 import { capitalize } from '@/lib/capitalize'
 import DocsLayout from '@/layouts/DocsLayout'
 import { DocsPageProps } from 'types/types'
+import MDXRenderer from '@/components/docs/MDXRenderer'
+import DocsMDXcomponents from '@/components/docs/documentation/components'
 
 // @ts-ignore
 const Page: NextPage<DocsPageProps> = ({
@@ -62,9 +64,9 @@ const Page: NextPage<DocsPageProps> = ({
               className='prose space-y-4 text-opacity-50 prose-li:underline-offset-4 dark:prose-invert'></ul>
           </div>
         )}>
-        <div className='prose-lg prose-slate px-3 text-slate-800 prose-headings:scroll-mt-20 prose-headings:font-bold prose-headings:text-slate-800 prose-a:rounded-sm prose-a:p-[2px] prose-a:text-blue-500 hover:prose-a:bg-blue-100 prose-blockquote:border-l-4 prose-blockquote:border-slate-600 prose-blockquote:py-1 prose-pre:overflow-x-scroll prose-pre:bg-[#282C34] prose-ol:list-decimal prose-ul:list-disc dark:prose-invert dark:text-slate-200 dark:prose-headings:text-slate-50 dark:prose-a:text-blue-400 dark:hover:prose-a:bg-slate-700 dark:prose-hr:divide-slate-600'>
-          <Component />
-        </div>
+        <MDXRenderer>
+          <Component components={DocsMDXcomponents} />
+        </MDXRenderer>
       </DocsLayout>
     </div>
   )
