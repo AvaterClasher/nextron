@@ -22,8 +22,7 @@ const DocsNav: React.FC<{
               target='_blank'
               rel='noopener noreferrer'
               href={link.link}
-              className='text-light'
-            >
+              className='text-light'>
               {link?.linkText}
             </a>
           </div>
@@ -31,8 +30,8 @@ const DocsNav: React.FC<{
         <div>
           <ThemeToggle />
         </div>
-        <CustomLink href={navbarCta.split('|||')[1]} className='scale-90'>
-          {navbarCta.split('|||')[0]}
+        <CustomLink href={navbarCta?.split('|||')[1]} className='scale-90'>
+          {navbarCta?.split('|||')[0]}
         </CustomLink>
       </div>
     </nav>
