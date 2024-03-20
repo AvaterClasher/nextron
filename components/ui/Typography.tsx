@@ -49,7 +49,8 @@ export const Markdown: React.FC<{ className?: string; text?: string }> = ({
       <p
         className={clsx('markdown', className)}
         {...props}
-        dangerouslySetInnerHTML={{ __html: snarkdown(text || '') }}></p>
+        dangerouslySetInnerHTML={{ __html: snarkdown(text || '') }}
+      ></p>
     </>
   )
 }

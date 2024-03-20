@@ -15,14 +15,16 @@ const Index = () => {
     <DashboardLayout
       active='overview'
       title='Overview'
-      subtitle={`A brief overview and status of **${data?.siteName}**`}>
+      subtitle={`A brief overview and status of **${data?.siteName}**`}
+    >
       <div>
         <CustomLink
           className='mr-2 inline'
           href={`https://nextron.netlify.app/${data?.siteSlug}`}
           target='_blank'
           noInvert
-          rel='noopener noreferrer'>
+          rel='noopener noreferrer'
+        >
           Visit site
         </CustomLink>
         <CustomLink
@@ -30,7 +32,8 @@ const Index = () => {
           noInvert
           href={`https://pagespeed.web.dev/report/?url=https://nextron.netlify.app/${data?.siteSlug}`}
           target='_blank'
-          rel='noopener noreferrer'>
+          rel='noopener noreferrer'
+        >
           View Lighthouse score
         </CustomLink>
         <CustomLink
@@ -38,7 +41,8 @@ const Index = () => {
           noInvert
           href={data?.repoLink}
           target='_blank'
-          rel='noopener noreferrer'>
+          rel='noopener noreferrer'
+        >
           View repository on GitHub
         </CustomLink>
       </div>

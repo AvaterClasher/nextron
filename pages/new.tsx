@@ -142,7 +142,8 @@ const NewSite = () => {
                         getValues().siteName
                       )}`
                     )
-                  }}>
+                  }}
+                >
                   Click here to auto-generate one from title.
                 </span>
               </TextSmall>

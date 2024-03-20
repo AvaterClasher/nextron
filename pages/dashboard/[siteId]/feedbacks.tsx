@@ -23,7 +23,8 @@ const Feedbacks = () => {
     <DashboardLayout
       title='Feedbacks'
       subtitle='Feedbacks that people submitted through the documentation website'
-      active='feedbacks'>
+      active='feedbacks'
+    >
       <div className='max-w-4xl'>
         <div>
           {site?.web3formsKey && (
@@ -38,9 +39,10 @@ const Feedbacks = () => {
             return (
               <div
                 key={feedback.id}
-                className='flex items-center justify-between rounded border border-slate-300 p-3 shadow dark:border-slate-700'>
+                className='flex items-center justify-between rounded border border-slate-300 p-3 shadow dark:border-slate-700'
+              >
                 <ReactStars edit={false} size={20} value={feedback.stars} />
-                <TextSmall className='font-semibold text-left'>
+                <TextSmall className='text-left font-semibold'>
                   {truncate(feedback.feedback, {
                     length: 50,
                   })}

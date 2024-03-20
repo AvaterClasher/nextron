@@ -47,13 +47,15 @@ const ProfileDropdown = () => {
               <MenuItem
                 callBack={() => {
                   setTheme('dark')
-                }}>
+                }}
+              >
                 Dark
               </MenuItem>
               <MenuItem
                 callBack={() => {
                   setTheme('light')
-                }}>
+                }}
+              >
                 Light
               </MenuItem>
             </MenuContent>
@@ -66,7 +68,8 @@ const ProfileDropdown = () => {
           <MenuSeparator />
           <MenuItem
             callBack={signOut}
-            className='text-red-500 hover:underline focus:underline'>
+            className='text-red-500 hover:underline focus:underline'
+          >
             Logout
           </MenuItem>
         </MenuContent>

@@ -1,6 +1,6 @@
 import prisma from '@/utils/prisma'
 import type { NextApiHandler } from 'next'
-import web3forms from 'use-webforms'
+import web3forms from 'use-web3forms'
 
 const handler: NextApiHandler = async (req, res) => {
   const { siteId, feedback, stars, sentBy } = req.body
@@ -31,7 +31,7 @@ const handler: NextApiHandler = async (req, res) => {
     message: `A new feedback has been submitted to ${site?.site.siteName}`,
     feedback: site.feedback,
     stars: site.stars,
-    'View in Nextron dashboard': `https://nextron.netlify.app/dashboard/${site.siteId}/feedback`,
+    'View in Nextron dashboard': `https://nextron.netlify.app/dashboard/${site.siteId}/feedbacks`,
   })
 
   res.json(site)

@@ -72,7 +72,8 @@ const Dashboard = () => {
                   <CustomLink
                     href={`/dashboard/${site.id}`}
                     noInvert
-                    className='h-full !p-5 transition-all hover:scale-[1.01] focus:scale-[1.01]'>
+                    className='h-full !p-5 transition-all hover:scale-[1.01] focus:scale-[1.01]'
+                  >
                     <h3 className='text-xl font-bold capitalize'>
                       {site.siteName}
                     </h3>
@@ -99,7 +100,8 @@ const Dashboard = () => {
               <CustomLink
                 href='/new'
                 noInvert
-                className='my-3 mx-auto max-w-sm'>
+                className='my-3 mx-auto max-w-sm'
+              >
                 Create your first documentation site
               </CustomLink>
             </TextSmall>

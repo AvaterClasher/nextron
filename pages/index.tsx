@@ -30,7 +30,8 @@ const Home: NextPage = () => {
             animationDuration={2000}
             color='rgb(129 140 248)'
             animate
-            show>
+            show
+          >
             <span>auto-updating</span>
           </RoughNotation>{' '}
           <br /> documentation website up in less than 30 seconds

@@ -3,7 +3,7 @@ import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 import rehypeCodeTitles from 'rehype-code-titles'
 import rehypeSlug from 'rehype-slug'
 import remarkGfm from 'remark-gfm'
-import rehypeHighlight from 'rehype-highlight';
+import rehypeHighlight from 'rehype-highlight'
 
 const bundleMdxContent = async (rawContent: string, theme: string) => {
   const result = await bundleMDX({
