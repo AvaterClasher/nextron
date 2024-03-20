@@ -13,7 +13,7 @@ import mdToc from 'markdown-toc'
 import DocsLayout from '@/layouts/DocsLayout'
 import { DocsPageProps } from 'types/types'
 import MDXRenderer from '@/components/docs/MDXRenderer'
-import DocsMDXcomponents from '@/components/docs/documentation/components';
+import DocsMDXcomponents from '@/components/docs/documentation/components'
 
 // @ts-ignore
 const Page: NextPage<DocsPageProps> = ({
@@ -65,6 +65,7 @@ const Page: NextPage<DocsPageProps> = ({
             </div>
           )}>
           <MDXRenderer>
+            {/* @ts-ignore */}
             <Component components={DocsMDXcomponents} />
           </MDXRenderer>
         </DocsLayout>
