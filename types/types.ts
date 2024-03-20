@@ -1,4 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next'
+import { NavbarLink } from '@prisma/client'
 
 export type ApiRoute = (
   req: NextApiRequest,
@@ -19,4 +20,15 @@ export interface NewSite {
   repoLink: string
   ogImageUrl: string
   siteSlug: string
+}
+
+export interface DocsPageProps {
+  content: string
+  tocHtml: string
+  navLinks: NavbarLink[]
+  navCta: string
+  logo: string
+  sidebar: string[]
+  slug: string
+  siteId: string
 }

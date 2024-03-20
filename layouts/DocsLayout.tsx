@@ -1,7 +1,10 @@
+import Feedback from '@/components/docs/Feedback'
+
 const DocsLayout: React.FC<{
   LeftSidebarContent: React.FC
   RightSidebarContent: React.FC
-}> = ({ LeftSidebarContent, RightSidebarContent, ...props }) => {
+  siteId: string
+}> = ({ LeftSidebarContent, RightSidebarContent, siteId, ...props }) => {
   return (
     <div className='max-w-8xl mx-auto px-4 sm:px-6 md:px-8'>
       <div className='fixed inset-0 top-[3.8125rem] left-[max(0px,calc(50%-45rem))] right-auto z-20 hidden w-64 overflow-y-auto border-r-2 border-r-slate-200 px-7 pb-10 dark:border-slate-700 lg:block'>
@@ -14,6 +17,9 @@ const DocsLayout: React.FC<{
           <div className='fixed top-[3.8125rem] bottom-0 right-[max(0px,calc(50%-45rem))] z-20 hidden w-[19.5rem] overflow-y-auto py-10 px-8 xl:block'>
             <div className='sticky max-h-[calc(var(--vh)-4rem)] overflow-y-auto'>
               <RightSidebarContent />
+              <div className='mt-10'>
+                <Feedback siteId={siteId} />
+              </div>
             </div>
           </div>
         </div>
