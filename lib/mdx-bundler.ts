@@ -5,7 +5,7 @@ import rehypeSlug from 'rehype-slug'
 import remarkGfm from 'remark-gfm'
 import rehypeHighlight from 'rehype-highlight'
 
-const bundleMdxContent = async (rawContent: string, theme: string) => {
+const bundleMdxContent = async (rawContent: string) => {
   const result = await bundleMDX({
     source: rawContent,
     xdmOptions(options) {
