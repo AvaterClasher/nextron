@@ -25,7 +25,8 @@ const SnippetInjection = () => {
     <DashboardLayout
       title='Snippet Injection'
       subtitle='Inject custom code such as analytics, popup menus, CSS stylesheets, custom fonts, etc.'
-      active='snippet-injection'>
+      active='snippet-injection'
+    >
       <div>
         <div>
           <TextSmall className='font-mono text-xl'>{'<head>'}</TextSmall>
@@ -56,7 +57,8 @@ const SnippetInjection = () => {
                 success: 'Updated successfully!',
                 error: 'Failed to update!',
               })
-            }}>
+            }}
+          >
             Save
           </Button>
         </div>

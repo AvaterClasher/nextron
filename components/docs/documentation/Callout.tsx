@@ -12,7 +12,8 @@ const Callout = (props: any) => {
         props.type == 'warning' && 'bg-yellow-400',
         props.type == 'danger' && 'bg-red-400',
         !props.type && 'bg-blue-400'
-      )}>
+      )}
+    >
       <div className='mb-3'>
         {(props.type == 'info' && <FeatherIcons.Info />) ||
           (props.type == 'tip' && <FeatherIcons.Zap />) ||

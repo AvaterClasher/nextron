@@ -7,7 +7,8 @@ export const Accordion = (props: any) => (
       <RadixAccordion.Item
         key={index}
         value={index.toString()}
-        className='my-1 w-full rounded-sm bg-slate-200 dark:bg-slate-800'>
+        className='my-1 w-full rounded-sm bg-slate-200 dark:bg-slate-800'
+      >
         <div className='px-5 py-2'>
           <RadixAccordion.Trigger className='flex w-full items-center justify-between text-left'>
             <p>{value?.title}</p>

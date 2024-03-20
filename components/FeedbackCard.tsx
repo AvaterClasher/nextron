@@ -48,7 +48,8 @@ const FeedbackCard: React.FC<{
         description={`Submitted on ${formatRelative(
           new Date(feedback.createdAt),
           new Date()
-        )}`}>
+        )}`}
+      >
         <div className='mt-8 space-y-6'>
           <div>
             <p className='text-lg font-semibold'>Feedback</p>
@@ -85,7 +86,8 @@ const FeedbackCard: React.FC<{
               })
             }}
             className='!border-red-500 !text-red-500'
-            noInvert>
+            noInvert
+          >
             Delete this feedback
           </Button>
         </div>

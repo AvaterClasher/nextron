@@ -81,14 +81,17 @@ const Settings = () => {
     <DashboardLayout
       title='Settings'
       subtitle='Settings that control the behavior of the documentation website'
-      active='settings'>
+      active='settings'
+    >
       <div>
         <Card
           title='Site details'
-          subtitle='These will appear on the docs navbar and SEO as well'>
+          subtitle='These will appear on the docs navbar and SEO as well'
+        >
           <form
             className='space-y-3'
-            onSubmit={handleSubmit(updateSiteDetails)}>
+            onSubmit={handleSubmit(updateSiteDetails)}
+          >
             <div>
               <TextSmall>Site name</TextSmall>
               <input {...register('siteName')} className='text-input w-full' />
@@ -123,7 +126,8 @@ const Settings = () => {
         </Card>
         <Card
           title='Repository link on GitHub'
-          subtitle='The markdown files for generating the documentaion will be fetched from this repo on GitHub'>
+          subtitle='The markdown files for generating the documentaion will be fetched from this repo on GitHub'
+        >
           <form
             className='flex'
             onSubmit={(e) => {
@@ -141,7 +145,8 @@ const Settings = () => {
                 error: 'There was an error updating the site details',
                 loading: 'Updating...',
               })
-            }}>
+            }}
+          >
             <Input
               defaultValue={data?.repoLink}
               name='repoLink'
@@ -153,7 +158,8 @@ const Settings = () => {
         </Card>
         <Card
           title='Site slug'
-          subtitle={`The site will be be hosted at **nextron.netlify.app/${slug}**, a custom domain can be added later`}>
+          subtitle={`The site will be be hosted at **nextron.netlify.app/${slug}**, a custom domain can be added later`}
+        >
           <div className='flex'>
             <Input
               className='mr-3 w-full'
@@ -175,14 +181,16 @@ const Settings = () => {
                   error: 'There was an error updating the site slug',
                   loading: 'Updating...',
                 })
-              }}>
+              }}
+            >
               Save
             </Button>
           </div>
         </Card>
         <Card
           title='GitHub token'
-          subtitle='Add this if you want to host docs from a private repo. You can get your token from [here](https://github.com/settings/tokens/new). Make sure you **give access to repos** while creating the token'>
+          subtitle='Add this if you want to host docs from a private repo. You can get your token from [here](https://github.com/settings/tokens/new). Make sure you **give access to repos** while creating the token'
+        >
           <div className='flex'>
             <Input
               className='mr-3 w-full'
@@ -203,14 +211,16 @@ const Settings = () => {
                   success: 'Updated successfully!',
                   error: 'Failed to update!',
                 })
-              }}>
+              }}
+            >
               Save
             </Button>
           </div>
         </Card>
         <Card
           title='Web3forms API key'
-          subtitle='Get your API key from [here](https://web3forms.com). This API key will be used for sending an email to you once a **feedback** is submitted from the docs site. You can access all the feedbacks here in the dashboard too.'>
+          subtitle='Get your API key from [here](https://web3forms.com). This API key will be used for sending an email to you once a **feedback** is submitted from the docs site. You can access all the feedbacks here in the dashboard too.'
+        >
           <div className='flex'>
             <Input
               className='mr-3 w-full'
@@ -231,14 +241,16 @@ const Settings = () => {
                   success: 'Updated successfully!',
                   error: 'Failed to update!',
                 })
-              }}>
+              }}
+            >
               Save
             </Button>
           </div>
         </Card>
         <Card
           title='Danger'
-          subtitle='Delete your site **permanently**, this cannot be reversed'>
+          subtitle='Delete your site **permanently**, this cannot be reversed'
+        >
           <DialogRoot>
             <DialogTrigger>
               <Button className='w-full font-bold !text-red-400' noInvert>
@@ -247,7 +259,8 @@ const Settings = () => {
             </DialogTrigger>
             <DialogContent
               title={`Delete ${data?.siteName}`}
-              description='Are you sure? This **cannot** be reversed!!!'>
+              description='Are you sure? This **cannot** be reversed!!!'
+            >
               <Button
                 noInvert
                 className='text-bold my-5 w-full !border text-lg !text-red-500 hover:!border-red-500'
@@ -265,7 +278,8 @@ const Settings = () => {
                     success: 'Deleted successfully!',
                     error: 'Failed to delete!',
                   })
-                }}>
+                }}
+              >
                 Delete it now
               </Button>
             </DialogContent>

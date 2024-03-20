@@ -35,7 +35,8 @@ const Feedback: React.FC<{ siteId: string }> = ({ siteId }) => {
           </DialogTrigger>
           <DialogContent
             title='Email?'
-            description='Would you like to provide your email so that we can get back to you?'>
+            description='Would you like to provide your email so that we can get back to you?'
+          >
             <form
               className='flex'
               onSubmit={(e) => {
@@ -66,7 +67,8 @@ const Feedback: React.FC<{ siteId: string }> = ({ siteId }) => {
                     loading: 'Sending feedback...',
                   })
                 }
-              }}>
+              }}
+            >
               <Input
                 placeholder='Email (optional)'
                 className='mr-2 w-full'
