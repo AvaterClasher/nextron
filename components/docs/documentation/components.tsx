@@ -3,6 +3,7 @@ import clsx from 'clsx'
 import * as FeatherIcons from 'react-feather'
 import Callout from './Callout'
 import Tooltip from './Tooltip'
+import { Accordion } from './Accordion'
 
 const DocsMDXcomponents = {
   pre: (props: any) => {
@@ -24,6 +25,7 @@ const DocsMDXcomponents = {
   Callout: Callout,
   Tooltip: Tooltip,
   Icons: FeatherIcons,
+  Accordion: Accordion,
 }
 
 function copyToClipboard(children: string | null | undefined): void {
