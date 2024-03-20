@@ -2,6 +2,7 @@ import { useRef } from 'react'
 import clsx from 'clsx'
 import * as FeatherIcons from 'react-feather'
 import Callout from './Callout'
+import Tooltip from './Tooltip'
 
 const DocsMDXcomponents = {
   pre: (props: any) => {
@@ -21,6 +22,7 @@ const DocsMDXcomponents = {
   },
 
   Callout: Callout,
+  Tooltip: Tooltip,
   Icons: FeatherIcons,
 }
 
