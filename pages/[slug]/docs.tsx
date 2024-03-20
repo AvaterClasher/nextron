@@ -8,6 +8,7 @@ import { useMemo } from 'react'
 import axios from 'axios'
 import bundleMdxContent from '@/lib/mdx-bundler'
 import Head from 'next/head'
+import Nav from '@/components/Nav'
 
 const Page = ({ files, code }) => {
   const Component = useMemo(() => getMDXComponent(code), [code])
@@ -20,9 +21,56 @@ const Page = ({ files, code }) => {
           href='https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/styles/atom-one-dark.min.css'
         />
       </Head>
-      {/* <pre>{JSON.stringify(files, null, 2)}</pre> */}
-      <div className='prose-lg prose-slate mx-auto mt-10 max-w-3xl px-3 text-slate-800 prose-headings:font-bold prose-headings:text-slate-800 prose-a:rounded-sm prose-a:p-[2px] prose-a:text-blue-500 hover:prose-a:bg-blue-100 prose-blockquote:border-l-4 prose-blockquote:border-slate-600 prose-blockquote:py-1 prose-pre:overflow-x-scroll prose-pre:bg-[#282C34] prose-ol:list-decimal prose-ul:list-disc dark:prose-invert dark:text-slate-200 dark:prose-headings:text-slate-50 dark:prose-a:text-blue-400 dark:hover:prose-a:bg-slate-700 dark:prose-hr:divide-slate-600'>
-        <Component />
+      <div>
+        <div className='container mx-auto'>
+          <div className='sticky top-0 -mb-20'>
+            <Nav />
+          </div>
+          <div className='flex flex-row flex-wrap py-5'>
+            <aside className='w-full border-r-2 border-white/50 px-2 sm:w-2/12'>
+              <div className='sticky top-20 w-full p-4'>
+                <div className='flex flex-col overflow-hidden'>
+                  <ul className='space-y-4'>
+                    <li>Lorem, ipsum.</li>
+                    <li>Saepe, eius?</li>
+                    <li>Ducimus, omnis.</li>
+                    <li>Error, cumque!</li>
+                    <li>Modi, quidem?</li>
+                    <li>Ducimus, officiis.</li>
+                    <li>Ipsum, aut?</li>
+                    <li>Hic, eveniet.</li>
+                    <li>Tenetur, odit!</li>
+                    <li>Laboriosam, quis?</li>
+                  </ul>
+                </div>
+              </div>
+            </aside>
+            <main role='main' className='w-full px-10 pt-4 sm:w-8/12'>
+              <div className='prose-lg prose-slate px-3 text-slate-800 prose-headings:font-bold prose-headings:text-slate-800 prose-a:rounded-sm prose-a:p-[2px] prose-a:text-blue-500 hover:prose-a:bg-blue-100 prose-blockquote:border-l-4 prose-blockquote:border-slate-600 prose-blockquote:py-1 prose-pre:overflow-x-scroll prose-pre:bg-[#282C34] prose-ol:list-decimal prose-ul:list-disc dark:prose-invert dark:text-slate-200 dark:prose-headings:text-slate-50 dark:prose-a:text-blue-400 dark:hover:prose-a:bg-slate-700 dark:prose-hr:divide-slate-600'>
+                <Component />
+              </div>
+            </main>
+            <div className='w-full px-2 sm:w-2/12'>
+              <div className='sticky top-20 w-full border-l border-white/30 p-4'>
+                <div className='flex flex-col overflow-hidden'>
+                  <ul className='space-y-4'>
+                    <li>Lorem, ipsum.</li>
+                    <li>Saepe, eius?</li>
+                    <li>Ducimus, omnis.</li>
+                    <li>Error, cumque!</li>
+                    <li>Modi, quidem?</li>
+                    <li>Ducimus, officiis.</li>
+                    <li>Ipsum, aut?</li>
+                    <li>Hic, eveniet.</li>
+                    <li>Tenetur, odit!</li>
+                    <li>Laboriosam, quis?</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <footer className='mt-auto'>...</footer>
       </div>
     </div>
   )
