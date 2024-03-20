@@ -1,7 +1,7 @@
 import { CustomLink } from '@/components/ui/Link'
 import { Heading3, Markdown, TextSmall } from '@/components/ui/Typography'
 import DashboardLayout from '@/layouts/DashboardLayout'
-import { Feedback, Site } from '@prisma/client'
+import { Feedback, NavbarLink, Site } from '@prisma/client'
 import { useRouter } from 'next/router'
 import useSWR from 'swr'
 import ReactStars from 'react-stars'
@@ -15,16 +15,16 @@ const Feedbacks = () => {
 
   const { data: site } = useSWR<
     Site & {
+      navbarLinks: NavbarLink[]
       feedbacks: Feedback[]
     }
-  >(`/api/get/site/?siteId=${siteId}&includeFeedbacks=true`)
+  >(`/api/get/site/?siteId=${siteId}`)
 
   return (
     <DashboardLayout
       title='Feedbacks'
       subtitle='Feedbacks that people submitted through the documentation website'
-      active='feedbacks'
-    >
+      active='feedbacks'>
       <div className='max-w-4xl'>
         <div>
           {site?.web3formsKey && (
@@ -39,8 +39,7 @@ const Feedbacks = () => {
             return (
               <div
                 key={feedback.id}
-                className='flex items-center justify-between rounded border border-slate-300 p-3 shadow dark:border-slate-700'
-              >
+                className='flex items-center justify-between rounded border border-slate-300 p-3 shadow dark:border-slate-700'>
                 <ReactStars edit={false} size={20} value={feedback.stars} />
                 <TextSmall className='text-left font-semibold'>
                   {truncate(feedback.feedback, {
