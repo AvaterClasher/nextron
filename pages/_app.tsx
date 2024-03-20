@@ -14,8 +14,7 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
         <link rel='shortcut icon' href='/favicon.png' type='image/x-icon' />
       </Head>
       <SWRConfig
-        value={{ fetcher: (url) => fetch(url).then((res) => res.json()) }}
-      >
+        value={{ fetcher: (url) => fetch(url).then((res) => res.json()) }}>
         <ThemeProvider attribute='class'>
           <Component {...pageProps} />
           <Toaster position='bottom-left' />
