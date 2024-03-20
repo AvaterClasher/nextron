@@ -121,7 +121,36 @@ const Settings = () => {
             </div>
           </form>
         </Card>
-
+        <Card
+          title='Repository link on GitHub'
+          subtitle='The markdown files for generating the documentaion will be fetched from this repo on GitHub'>
+          <form
+            className='flex'
+            onSubmit={(e) => {
+              e.preventDefault()
+              const req = axios
+                .post('/api/update/repo-link', {
+                  siteId: data?.id,
+                  repoLink: e.currentTarget.repoLink.value,
+                })
+                .then(({ data }) => {
+                  mutate({ ...data }, false)
+                })
+              toast.promise(req, {
+                success: 'Updated successfully',
+                error: 'There was an error updating the site details',
+                loading: 'Updating...',
+              })
+            }}>
+            <Input
+              defaultValue={data?.repoLink}
+              name='repoLink'
+              pattern='^https:\/\/github.com\/[^/]+\/[^/]+$'
+              className='mr-3 inline-block w-full'
+            />
+            <Button type='submit'>Update</Button>
+          </form>
+        </Card>
         <Card
           title='Site slug'
           subtitle={`The site will be be hosted at **nextron.netlify.app/${slug}**, a custom domain can be added later`}>
@@ -256,7 +285,7 @@ const Card: React.FC<{ title: string; subtitle: string }> = ({
 }) => {
   return (
     <div>
-      <div className='my-9 w-full max-w-3xl rounded border p-4 shadow-sm dark:border-slate-700'>
+      <div className='my-9 w-full max-w-3xl rounded border p-4 shadow-sm dark:border-slate-800'>
         <Heading3>{title}</Heading3>
         <TextSmall className='my-2'>
           <Markdown text={subtitle} />
