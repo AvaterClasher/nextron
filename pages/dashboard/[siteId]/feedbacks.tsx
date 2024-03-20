@@ -13,10 +13,11 @@ const Feedbacks = () => {
   const router = useRouter()
   const siteId = router.query.siteId as string
 
-  const { data: feedbacks } = useSWR<Feedback[]>(
-    `/api/get/feedbacks/?siteId=${siteId}`
-  )
-  const { data } = useSWR<Site>(`/api/get/site/?siteId=${siteId}`)
+  const { data: site } = useSWR<
+    Site & {
+      feedbacks: Feedback[]
+    }
+  >(`/api/get/site/?siteId=${siteId}&includeFeedbacks=true`)
 
   return (
     <DashboardLayout
@@ -25,7 +26,7 @@ const Feedbacks = () => {
       active='feedbacks'>
       <div className='max-w-4xl'>
         <div>
-          {!data?.web3formsKey && (
+          {site?.web3formsKey && (
             <div className='inline-block rounded-md bg-green-300 p-5 dark:bg-green-800'>
               <Markdown text='Make sure you have set up your [Web3forms](https://web3forms.com) API key in settings to recieve an email whenever someone submits a form.' />
             </div>
@@ -33,13 +34,13 @@ const Feedbacks = () => {
         </div>
         <Heading3 className='mt-10'>All Feedbacks</Heading3>
         <div className='mt-4 space-y-3'>
-          {feedbacks?.map((feedback) => {
+          {site?.feedbacks?.map((feedback) => {
             return (
               <div
                 key={feedback.id}
                 className='flex items-center justify-between rounded border border-slate-300 p-3 shadow dark:border-slate-700'>
                 <ReactStars edit={false} size={20} value={feedback.stars} />
-                <TextSmall className='font-semibold'>
+                <TextSmall className='font-semibold text-left'>
                   {truncate(feedback.feedback, {
                     length: 50,
                   })}
@@ -55,12 +56,13 @@ const Feedbacks = () => {
             )
           })}
         </div>
-        {feedbacks?.length === 0 && (
+        {site?.feedbacks?.length === 0 && (
           <div className='space-y-4 p-5'>
             <Empty />
             <TextSmall className='text-center'>No feedbacks yet!</TextSmall>
           </div>
         )}
+        {}
       </div>
     </DashboardLayout>
   )
