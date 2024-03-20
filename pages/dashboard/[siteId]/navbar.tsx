@@ -202,3 +202,5 @@ const Navbar = () => {
     </DashboardLayout>
   )
 }
+
+export default Navbar

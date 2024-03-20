@@ -69,3 +69,5 @@ const Feedbacks = () => {
     </DashboardLayout>
   )
 }
+
+export default Feedbacks

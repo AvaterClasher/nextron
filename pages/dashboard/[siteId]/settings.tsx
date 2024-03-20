@@ -14,6 +14,15 @@ import { useRouter } from 'next/router'
 import { useState } from 'react'
 import useSWR from 'swr'
 import toast from 'react-hot-toast'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { useForm } from 'react-hook-form'
+import { z } from 'zod'
+
+interface SiteDetails {
+  siteName: string
+  siteDescription: string
+  ogImageUrl: string
+}
 
 const Settings = () => {
   const router = useRouter()
@@ -23,18 +32,125 @@ const Settings = () => {
 
   const [ghToken, setGhToken] = useState(data?.gitHubAccessToken)
   const [web3formsKey, setWeb3formsKey] = useState(data?.web3formsKey)
+  const [slug, setSlug] = useState(data?.siteSlug)
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<SiteDetails>({
+    resolver: zodResolver(
+      z.object({
+        siteName: z
+          .string()
+          .min(1, 'Site name must be more than a character')
+          .max(100, 'Site name must be less than 100 characters'),
+        siteDescription: z
+          .string()
+          .min(1, 'Site description must be more than a character')
+          .max(150, 'Site description must be less than 150 characters'),
+        ogImageUrl: z.string().url('Please enter a valid URL'),
+      })
+    ),
+    defaultValues: {
+      siteName: data?.siteName,
+      siteDescription: data?.siteDescription,
+      ogImageUrl: data?.ogImageUrl,
+    },
+  })
+
+  const updateSiteDetails = (siteDetails: SiteDetails) => {
+    const req = axios
+      .post('/api/update/site-details', { ...siteDetails, siteId: data?.id })
+      .then(() => {
+        // @ts-ignore
+        mutate({ ...data, ...siteDetails })
+      })
+
+    toast.promise(req, {
+      success: 'Updated successfully',
+      error: 'There was an error updating the site details',
+      loading: 'Updating...',
+    })
+  }
 
   return (
     <DashboardLayout
       title='Settings'
       subtitle='Settings that control the behavior of the documentation website'
-      active='settings'
-    >
+      active='settings'>
       <div>
         <Card
+          title='Site details'
+          subtitle='These will appear on the docs navbar and SEO as well'>
+          <form
+            className='space-y-3'
+            onSubmit={handleSubmit(updateSiteDetails)}>
+            <div>
+              <TextSmall>Site name</TextSmall>
+              <input {...register('siteName')} className='text-input w-full' />
+              <TextSmall className='mt-1 text-xs !text-red-400'>
+                {errors.siteName?.message}
+              </TextSmall>
+            </div>
+            <div>
+              <TextSmall>Site description</TextSmall>
+              <input
+                {...register('siteDescription')}
+                className='text-input w-full'
+              />
+              <TextSmall className='mt-1 text-xs !text-red-400'>
+                {errors.siteDescription?.message}
+              </TextSmall>
+            </div>
+            <div className='mb-10'>
+              <TextSmall>OG image</TextSmall>
+              <input
+                {...register('ogImageUrl')}
+                className='text-input w-full'
+              />
+              <TextSmall className='mt-1 text-xs !text-red-400'>
+                {errors.ogImageUrl?.message}
+              </TextSmall>
+            </div>
+            <div className='pt-5'>
+              <Button type='submit'>Update</Button>
+            </div>
+          </form>
+        </Card>
+
+        <Card
+          title='Site slug'
+          subtitle={`The site will be be hosted at **nextron.netlify.app/${slug}**, a custom domain can be added later`}>
+          <div className='flex'>
+            <Input
+              className='mr-3 w-full'
+              placeholder='my-project'
+              defaultValue={slug}
+              onChange={(e) => setSlug(e.target.value)}
+            />
+            <Button
+              onClick={() => {
+                const req = axios
+                  .post('/api/update/site-slug', {
+                    siteId: data?.id,
+                    slug,
+                  })
+                  // @ts-ignore
+                  .then(() => mutate({ ...data, siteSlug: slug }))
+                toast.promise(req, {
+                  success: 'Updated successfully!',
+                  error: 'There was an error updating the site slug',
+                  loading: 'Updating...',
+                })
+              }}>
+              Save
+            </Button>
+          </div>
+        </Card>
+        <Card
           title='GitHub token'
-          subtitle='Add this if you want to host docs from a _private repo_. You can get your token from [here](https://github.com/settings/tokens/new). Make sure you **give access to repos** while creating the token'
-        >
+          subtitle='Add this if you want to host docs from a private repo. You can get your token from [here](https://github.com/settings/tokens/new). Make sure you **give access to repos** while creating the token'>
           <div className='flex'>
             <Input
               className='mr-3 w-full'
@@ -55,16 +171,14 @@ const Settings = () => {
                   success: 'Updated successfully!',
                   error: 'Failed to update!',
                 })
-              }}
-            >
+              }}>
               Save
             </Button>
           </div>
         </Card>
         <Card
           title='Web3forms API key'
-          subtitle='Get your API key from [here](https://web3forms.com). This API key will be used for sending an email to you once a **feedback** is submitted from the docs site. You can access all the feedbacks here in the dashboard too.'
-        >
+          subtitle='Get your API key from [here](https://web3forms.com). This API key will be used for sending an email to you once a **feedback** is submitted from the docs site. You can access all the feedbacks here in the dashboard too.'>
           <div className='flex'>
             <Input
               className='mr-3 w-full'
@@ -85,16 +199,14 @@ const Settings = () => {
                   success: 'Updated successfully!',
                   error: 'Failed to update!',
                 })
-              }}
-            >
+              }}>
               Save
             </Button>
           </div>
         </Card>
         <Card
           title='Danger'
-          subtitle='Delete your site **permanently**, this cannot be reversed'
-        >
+          subtitle='Delete your site **permanently**, this cannot be reversed'>
           <DialogRoot>
             <DialogTrigger>
               <Button className='w-full font-bold !text-red-400' noInvert>
@@ -103,8 +215,7 @@ const Settings = () => {
             </DialogTrigger>
             <DialogContent
               title={`Delete ${data?.siteName}`}
-              description='Are you sure? This **cannot** be reversed!!!'
-            >
+              description='Are you sure? This **cannot** be reversed!!!'>
               <Button
                 noInvert
                 className='text-bold my-5 w-full !border text-lg !text-red-500 hover:!border-red-500'
@@ -122,8 +233,7 @@ const Settings = () => {
                     success: 'Deleted successfully!',
                     error: 'Failed to delete!',
                   })
-                }}
-              >
+                }}>
                 Delete it now
               </Button>
             </DialogContent>
