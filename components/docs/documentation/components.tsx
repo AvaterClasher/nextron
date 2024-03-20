@@ -4,6 +4,8 @@ import * as FeatherIcons from 'react-feather'
 import Callout from './Callout'
 import Tooltip from './Tooltip'
 import { Accordion } from './Accordion'
+import { Sandpack } from '@codesandbox/sandpack-react'
+import '@codesandbox/sandpack-react/dist/index.css'
 
 const DocsMDXcomponents = {
   pre: (props: any) => {
@@ -26,6 +28,7 @@ const DocsMDXcomponents = {
   Tooltip: Tooltip,
   Icons: FeatherIcons,
   Accordion: Accordion,
+  Sandpack: Sandpack,
 }
 
 function copyToClipboard(children: string | null | undefined): void {
