@@ -38,8 +38,7 @@ const Navbar = () => {
     <DashboardLayout
       title='Navbar'
       subtitle='Customize the navbar of the documentation website'
-      active='navbar'
-    >
+      active='navbar'>
       <div className='max-w-3xl'>
         <div>
           <Heading3>CTA button</Heading3>
@@ -74,8 +73,7 @@ const Navbar = () => {
                   error: 'Failed to update',
                   loading: 'Updating...',
                 })
-              }}
-            >
+              }}>
               Save
             </Button>
           </div>
@@ -87,18 +85,11 @@ const Navbar = () => {
               return (
                 <div
                   key={link.id}
-                  className='flex w-full justify-between rounded py-2 px-2 hover:bg-slate-100 dark:hover:bg-slate-900'
-                >
+                  className='flex w-full justify-between rounded py-2 px-2 hover:bg-slate-100 dark:hover:bg-slate-900'>
                   <TextSmall>{link.linkText}</TextSmall>
                   <TextSmall>
                     <Tooltip content={link.link} side='right' sideOffset={5}>
-                      <Markdown
-                        text={
-                          link.link.startsWith('/')
-                            ? `[${link.linkText}](${link.link})`
-                            : `[${link.linkText}](https://${link.link})`
-                        }
-                      />
+                      <Markdown text={`[${link.linkText}](${link.link})`} />
                     </Tooltip>
                   </TextSmall>
                   <Button
@@ -125,8 +116,7 @@ const Navbar = () => {
                         error: 'Failed to delete',
                         loading: 'Deleting...',
                       })
-                    }}
-                  >
+                    }}>
                     Delete
                   </Button>
                 </div>
@@ -138,8 +128,7 @@ const Navbar = () => {
               </DialogTrigger>
               <DialogContent
                 title='Create a navbar link'
-                description='This will be updated in the website soon'
-              >
+                description='This will be updated in the website soon'>
                 <div className='mt-5 space-y-3'>
                   <div>
                     <TextSmall>Text that appears</TextSmall>
@@ -195,8 +184,7 @@ const Navbar = () => {
                       })
                       setnavLinkText('')
                       setnavLinkUrl('')
-                    }}
-                  >
+                    }}>
                     Add link
                   </Button>
                 </div>

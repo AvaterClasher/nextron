@@ -10,6 +10,7 @@ import {
   Activity,
   Command,
   Edit3,
+  Home,
   IconProps,
   Link2,
   MessageCircle,
@@ -21,6 +22,7 @@ type ActiveTab =
   | 'overview'
   | 'snippet-injection'
   | 'blog'
+  | 'homepage'
   | 'feedbacks'
   | 'integrations'
   | 'navbar'
@@ -41,7 +43,6 @@ const DashboardLayout: React.FC<{
 }> = ({ title, subtitle, active, ...props }) => {
   const router = useRouter()
   const siteId = router.query.siteId as string
-  const { data } = useSession()
 
   const sideBarLinks: SideBarLinks[] = [
     {
@@ -49,6 +50,12 @@ const DashboardLayout: React.FC<{
       href: `/dashboard/${siteId}`,
       active: 'overview',
       Icon: Activity,
+    },
+    {
+      name: 'Homepage',
+      href: `/dashboard/${siteId}/homepage`,
+      active: 'homepage',
+      Icon: Home,
     },
     {
       name: 'Snippet injection',
@@ -110,8 +117,7 @@ const DashboardLayout: React.FC<{
                             'border-none',
                             active === link.active &&
                               '!bg-slate-100 font-semibold dark:!bg-slate-700 dark:!text-white'
-                          )}
-                        >
+                          )}>
                           <Icon className='mr-2 inline-block scale-75 opacity-75' />
                           <span className='hidden md:inline-block'>
                             {link.name}
@@ -127,8 +133,7 @@ const DashboardLayout: React.FC<{
                       <CustomLink
                         href='/dashboard'
                         noInvert
-                        className='mt-3 mb-[2px] block rounded-none border-none !bg-slate-100 py-3 px-5 text-sm text-slate-400 hover:font-bold dark:!bg-slate-900'
-                      >
+                        className='mt-3 mb-[2px] block rounded-none border-none !bg-slate-100 py-3 px-5 text-sm text-slate-400 hover:font-bold dark:!bg-slate-900'>
                         {'<-'}{' '}
                         <span className='hidden sm:inline-block'>Go back</span>
                       </CustomLink>
@@ -144,7 +149,7 @@ const DashboardLayout: React.FC<{
           <main role='main' className='w-4/5 px-5 pt-1 sm:px-2'>
             <div className='mt-24 pl-5 sm:pl-16'>
               <Heading1>{title}</Heading1>
-              <p className='text-light mt-5 mb-16 text-lg'>
+              <p className='text-light mt-5 mb-16 max-w-4xl text-lg'>
                 <Markdown text={subtitle} />
               </p>
               {props.children}
