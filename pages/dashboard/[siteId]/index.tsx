@@ -19,7 +19,7 @@ const Index = () => {
     >
       <div>
         <CustomLink
-          className='mr-2 inline'
+          className='block sm:inline my-2 sm:my-auto mr-2'
           href={`https://nextron.netlify.app/${data?.siteSlug}`}
           target='_blank'
           noInvert
@@ -28,7 +28,7 @@ const Index = () => {
           Visit site
         </CustomLink>
         <CustomLink
-          className='mr-2 inline'
+          className='block sm:inline my-2 sm:my-auto mr-2'
           noInvert
           href={`https://pagespeed.web.dev/report/?url=https://nextron.netlify.app/${data?.siteSlug}`}
           target='_blank'
@@ -37,7 +37,7 @@ const Index = () => {
           View Lighthouse score
         </CustomLink>
         <CustomLink
-          className='inline'
+          className='block sm:inline my-2 sm:my-auto'
           noInvert
           href={data?.repoLink}
           target='_blank'

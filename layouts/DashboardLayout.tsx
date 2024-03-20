@@ -6,6 +6,16 @@ import ProtectedRoute from '@/lib/ProtectedRoute'
 import clsx from 'clsx'
 import { useSession } from 'next-auth/react'
 import { useRouter } from 'next/router'
+import {
+  Activity,
+  Command,
+  Edit3,
+  IconProps,
+  Link2,
+  MessageCircle,
+  Settings,
+  Volume2,
+} from 'react-feather'
 
 type ActiveTab =
   | 'overview'
@@ -21,6 +31,7 @@ interface SideBarLinks {
   name: string
   href: string
   active: ActiveTab
+  Icon: React.FC<IconProps>
 }
 
 const DashboardLayout: React.FC<{
@@ -37,36 +48,43 @@ const DashboardLayout: React.FC<{
       name: 'Overview',
       href: `/dashboard/${siteId}`,
       active: 'overview',
+      Icon: Activity,
     },
     {
       name: 'Snippet injection',
       href: `/dashboard/${siteId}/snippet-injection`,
       active: 'snippet-injection',
+      Icon: Command,
     },
     {
       name: 'Blog',
       href: `/dashboard/${siteId}/blog`,
       active: 'blog',
+      Icon: Edit3,
     },
     {
       name: `Feedbacks`,
       href: `/dashboard/${siteId}/feedbacks`,
       active: 'feedbacks',
+      Icon: MessageCircle,
     },
     {
       name: `Navbar`,
       href: `/dashboard/${siteId}/navbar`,
       active: 'navbar',
+      Icon: Link2,
     },
     {
       name: `Announcement`,
       href: `/dashboard/${siteId}/announcement`,
       active: 'announcement',
+      Icon: Volume2,
     },
     {
       name: `Settings`,
       href: `/dashboard/${siteId}/settings`,
       active: 'settings',
+      Icon: Settings,
     },
   ]
 
@@ -74,7 +92,7 @@ const DashboardLayout: React.FC<{
     <ProtectedRoute>
       <div className='h-screen w-screen'>
         <div className='flex flex-row flex-wrap'>
-          <aside className='w-full sm:w-1/5'>
+          <aside className='w-1/5'>
             <div className='sticky top-0 w-full'>
               <div className='relative h-screen border-r-2 border-r-slate-200 pt-24 dark:border-r-slate-800'>
                 <div className='absolute top-0 p-4'>
@@ -82,6 +100,7 @@ const DashboardLayout: React.FC<{
                 </div>
                 <ul className='space-y-3 px-4'>
                   {sideBarLinks.map((link, index) => {
+                    const Icon = link.Icon
                     return (
                       <li key={index}>
                         <CustomLink
@@ -91,9 +110,11 @@ const DashboardLayout: React.FC<{
                             'border-none',
                             active === link.active &&
                               '!bg-slate-100 font-semibold dark:!bg-slate-700 dark:!text-white'
-                          )}
-                        >
-                          {link.name}
+                          )}>
+                          <Icon className='mr-2 inline-block scale-75 opacity-75' />
+                          <span className='hidden md:inline-block'>
+                            {link.name}
+                          </span>
                         </CustomLink>
                       </li>
                     )
@@ -105,9 +126,9 @@ const DashboardLayout: React.FC<{
                       <CustomLink
                         href='/dashboard'
                         noInvert
-                        className='mt-3 mb-[2px] block rounded-none border-none !bg-slate-100 py-3 px-5 text-sm text-slate-400 hover:font-bold dark:!bg-slate-900'
-                      >
-                        {'<-'} Go back
+                        className='mt-3 mb-[2px] block rounded-none border-none !bg-slate-100 py-3 px-5 text-sm text-slate-400 hover:font-bold dark:!bg-slate-900'>
+                        {'<-'}{' '}
+                        <span className='hidden sm:inline-block'>Go back</span>
                       </CustomLink>
                     </div>
                     <div className='items-center justify-between border-t border-t-slate-300 bg-slate-100 px-5 py-2 pt-5 dark:border-t-slate-700 dark:bg-slate-900'>
@@ -118,8 +139,8 @@ const DashboardLayout: React.FC<{
               </div>
             </div>
           </aside>
-          <main role='main' className='w-full px-2 pt-1 sm:w-4/5'>
-            <div className='mt-24 pl-16'>
+          <main role='main' className='w-4/5 px-5 pt-1 sm:px-2'>
+            <div className='mt-24 pl-5 sm:pl-16'>
               <Heading1>{title}</Heading1>
               <p className='text-light mt-5 mb-16 text-lg'>
                 <Markdown text={subtitle} />
