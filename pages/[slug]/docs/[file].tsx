@@ -3,7 +3,6 @@ import prisma from '@/utils/prisma'
 import { getMDXComponent } from 'mdx-bundler/client'
 import { useMemo } from 'react'
 import bundleMdxContent from '@/lib/mdx-bundler'
-import Head from 'next/head'
 import DocsNav from '@/components/docs/navbar'
 import getAllFiles from '@/utils/getAllFiles'
 import getFileContent from '@/utils/getFile'
@@ -31,12 +30,6 @@ const Page: NextPage<DocsPageProps> = ({
   const Component = useMemo(() => getMDXComponent(content), [content])
   return (
     <div>
-      <Head>
-        <link
-          rel='stylesheet'
-          href='https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/styles/atom-one-dark.min.css'
-        />
-      </Head>
       <div className='sticky top-0 z-30'>
         <DocsNav links={navLinks} navbarCta={navCta} logo={logo} />
       </div>
@@ -50,8 +43,7 @@ const Page: NextPage<DocsPageProps> = ({
                   <Link href={`/${slug}/docs/${file}`}>
                     <a
                       className='block rounded px-3 py-2 capitalize hover:bg-slate-50 dark:hover:bg-slate-800'
-                      href={`/${slug}/docs/${file}`}
-                    >
+                      href={`/${slug}/docs/${file}`}>
                       {file.replace(/-/gi, ' ')}
                     </a>
                   </Link>
@@ -67,8 +59,7 @@ const Page: NextPage<DocsPageProps> = ({
               <ul dangerouslySetInnerHTML={{ __html: tocHtml }}></ul>
             </div>
           </div>
-        )}
-      >
+        )}>
         <MDXRenderer>
           {/* @ts-ignore */}
           <Component components={DocsMDXcomponents} />
