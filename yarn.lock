@@ -3079,11 +3079,6 @@ flatted@^3.1.0:
   resolved "https://registry.yarnpkg.com/flatted/-/flatted-3.2.5.tgz#76c8584f4fc843db64702a6bd04ab7a8bd666da3"
   integrity sha512-WIWGi2L3DyTUvUrwRKgGi9TwxQMUEqPOPQBVi71R96jZXJdFskXEmf54BoZaS1kknGODoIGASGEzBUYdyMCBJg==
 
-focus-options-polyfill@1.5.1:
-  version "1.5.1"
-  resolved "https://registry.yarnpkg.com/focus-options-polyfill/-/focus-options-polyfill-1.5.1.tgz#0f422580d9d1fb65651f2968b547032eb17dab3c"
-  integrity sha512-7yH20IePROHJLLbJvqqtsG420jE6DuukccapiB/WagtUpnc98r9NzHbX5rnjCDgdZqLgcqlzGjn+8l0Zb8Zf9w==
-
 follow-redirects@^1.14.7:
   version "1.14.7"
   resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.14.7.tgz#2004c02eb9436eee9a21446a6477debf17e81685"
@@ -5389,14 +5384,6 @@ react-is@^17.0.2:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-17.0.2.tgz#e691d4a8e9c789365655539ab372762b0efb54f0"
   integrity sha512-w2GsyukL62IJnlaff/nRegPQR94C/XXamvMWmSHRJ4y7Ts/4ocGRmTHvOs8PSE6pB3dWOrD/nueuU5sduBsQ4w==
 
-react-medium-image-zoom@^4.3.5:
-  version "4.4.3"
-  resolved "https://registry.yarnpkg.com/react-medium-image-zoom/-/react-medium-image-zoom-4.4.3.tgz#d5e3074becef7be4bfe35ebcd291eac462093bf5"
-  integrity sha512-I928Z6mEMRUup4CPa+XtASiSuFzdVb1ecztXpF7xAJddXv4XZSE4n5gleZNYCn5wEU1LQY5LiN4aNW4KgrOVIA==
-  dependencies:
-    focus-options-polyfill "1.5.1"
-    tslib "^2.4.0"
-
 react-remove-scroll-bar@^2.1.0:
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/react-remove-scroll-bar/-/react-remove-scroll-bar-2.2.0.tgz#d4d545a7df024f75d67e151499a6ab5ac97c8cdd"
@@ -6089,7 +6076,7 @@ tslib@^2.1.0:
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-2.3.1.tgz#e8a335add5ceae51aa261d32a490158ef042ef01"
   integrity sha512-77EbyPPpMz+FRFRuAFlWMtmgUWGe9UOG2Z25NqCwiIjRhOf5iKGuzSe5P2w1laq+FkRy4p+PCuVkJSGkzTEKVw==
 
-tslib@^2.3.0, tslib@^2.4.0:
+tslib@^2.3.0:
   version "2.6.2"
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-2.6.2.tgz#703ac29425e7b37cd6fd456e92404d46d1f3e4ae"
   integrity sha512-AEYxH93jGFPn/a2iVAwW87VuUIkR1FVUKB77NwMF7nBTDkDrrT/Hpt/IrCJ0QXhW27jTBDcf5ZY7w6RiqTMw2Q==

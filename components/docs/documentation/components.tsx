@@ -6,6 +6,7 @@ import Tooltip from './Tooltip'
 import { Accordion } from './Accordion'
 import { Sandpack } from '@codesandbox/sandpack-react'
 import '@codesandbox/sandpack-react/dist/index.css'
+import { RoughNotation } from 'react-rough-notation';
 
 const DocsMDXcomponents = {
   pre: (props: any) => {
@@ -30,6 +31,7 @@ const DocsMDXcomponents = {
   Icons: FeatherIcons,
   Accordion: Accordion,
   Sandpack: Sandpack,
+  RoughNotation: RoughNotation,
 }
 
 function copyToClipboard(children: string | null | undefined): void {
