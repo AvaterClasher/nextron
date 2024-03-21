@@ -34,8 +34,7 @@ const BlogPage = () => {
     <DashboardLayout
       title={data?.title || '...'}
       subtitle={data?.description || '...'}
-      active='blog'
-    >
+      active='blog'>
       <div>
         <Button
           noInvert
@@ -59,8 +58,25 @@ const BlogPage = () => {
               error: 'Error updating blog!',
               loading: 'Updating blog...',
             })
-          }}
-        >
+          }}>
+          <Save className='relative -top-px mr-1 inline-block' size={18} /> Save
+        </Button>
+        <Button
+          className='mr-4'
+          onClick={() => {
+            const req = axios
+              .post('/api/delete/blog', {
+                blogId: router.query.blogId,
+              })
+              .then(() => {
+                router.push(`/dashboard/${router.query.siteId}/blog`)
+              })
+            toast.promise(req, {
+              success: 'Blog deleted!',
+              error: 'Error deleting blog!',
+              loading: 'Deleting blog...',
+            })
+          }}>
           <Save className='relative -top-px mr-1 inline-block' size={18} /> Save
         </Button>
         <Button noInvert className='mr-4'>
@@ -104,8 +120,7 @@ const BlogPage = () => {
                         loading: 'Updating blog status...',
                       })
                     })
-                }}
-              >
+                }}>
                 {data?.published ? 'Unpublish' : 'Publish'} post
               </Button>
             </div>
@@ -131,8 +146,7 @@ const BlogPage = () => {
                     error: 'Error updating blog!',
                     loading: 'Updating blog...',
                   })
-                })}
-              >
+                })}>
                 <div>
                   <H3>Site slug</H3>
                   <input
@@ -191,8 +205,7 @@ const BlogPage = () => {
             data?.published
               ? 'The blog post is published now. To update, just edit the content below and save it'
               : 'The blog is not published yet. Publish from the settings → '
-          }
-        >
+          }>
           {data?.published ? (
             <div className='mt-4 inline-block rounded-sm bg-teal-200 px-1 py-px text-xs text-teal-800'>
               Blog Published
