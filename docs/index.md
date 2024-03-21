@@ -2,10 +2,10 @@
 
 <Grid
 items={[
-{title: 'Introduction', description: "What's Nextron and how it simplify your documentating experience" ,link: '/docs/getting-started.md', color: 'blue'},
-{title: 'Getting Started', description: 'Create your first documentation site with Nextron', link: '/docs/getting-started.md', color: 'blue'},
-{title: 'Customizing', description: 'Learn how you can customize the look and feel of your docs site.', link: '/docs/getting-started.md', color: 'cyan'},
-{title: 'Components', description: 'All the dynamic components(mdx) that you can use in your docs', link: '/docs/components.md', color: 'yellow'},
+{title: 'Introduction', description: "What's Nextron and how it simplify your documentating experience" ,link: '/docs/getting-started', color: 'blue'},
+{title: 'Getting Started', description: 'Create your first documentation site with Nextron', link: '/docs/getting-started', color: 'blue'},
+{title: 'Customizing', description: 'Learn how you can customize the look and feel of your docs site.', link: '/docs/getting-started', color: 'cyan'},
+{title: 'Components', description: 'All the dynamic components(mdx) that you can use in your docs', link: '/docs/components', color: 'yellow'},
 ]}
 />
 
