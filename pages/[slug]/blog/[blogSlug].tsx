@@ -43,7 +43,8 @@ const BlogPage: NextPage<{
           <a
             target='_blank'
             rel='noopener noreferrer'
-            href={`https://twitter.com/${author}`}>
+            href={`https://twitter.com/${author}`}
+          >
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={`https://unavatar.io/twitter/${author}`}

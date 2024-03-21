@@ -20,7 +20,8 @@ const DocsLink: React.FC<
         className={clsx(
           'text-blue-500 hover:text-blue-600 hover:underline dark:hover:text-blue-500',
           props?.className
-        )}>
+        )}
+      >
         {props.children}
       </a>
     </Wrap>

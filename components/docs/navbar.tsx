@@ -22,7 +22,8 @@ const DocsNav: React.FC<{
               target='_blank'
               rel='noopener noreferrer'
               href={link.link}
-              className='text-light'>
+              className='text-light'
+            >
               {link?.linkText}
             </a>
           </div>

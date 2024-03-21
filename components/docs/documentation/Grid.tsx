@@ -30,7 +30,8 @@ const Grid: React.FC<{
               )}
               style={{
                 backgroundColor: customColor && customColor,
-              }}>
+              }}
+            >
               <h3 className='mb-4 text-2xl font-bold'>{title}</h3>
               <p className='text-base'>{description}</p>
             </div>

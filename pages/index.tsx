@@ -44,7 +44,8 @@ const Home: NextPage = () => {
             animationDuration={2000}
             color='rgb(129 140 248)'
             animate
-            show>
+            show
+          >
             <span>auto-updating</span>
           </RoughNotation>{' '}
           <br /> documentation website up in less than 30 seconds
@@ -91,7 +92,8 @@ const Home: NextPage = () => {
           {features.map(({ title, description, Icon }) => (
             <div
               key={title}
-              className='rounded border p-7 dark:border-slate-800'>
+              className='rounded border p-7 dark:border-slate-800'
+            >
               <Icon size={25} opacity={0.7} />
               <div className='mt-4'>
                 <h3 className='text-xl font-bold'>{title}</h3>
