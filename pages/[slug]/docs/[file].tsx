@@ -31,6 +31,8 @@ const Page: NextPage<DocsPageProps> = ({
   slug,
   siteId,
 }) => {
+  const router = useRouter()
+  const { file: fileName } = router.query
   const Component = useMemo(() => getMDXComponent(content), [content])
 
   return (
@@ -69,8 +71,12 @@ const Page: NextPage<DocsPageProps> = ({
                 <li key={file}>
                   <Link href={`/${slug}/docs/${file}`}>
                     <a
-                      className='block rounded px-3 py-2 capitalize hover:bg-slate-50 dark:hover:bg-slate-800'
-                      href={`/${slug}/docs/${file}`}>
+                      className={clsx(
+                        'block rounded px-3 py-2 capitalize hover:bg-slate-50 dark:hover:bg-slate-800',
+                        fileName === file
+                          ? 'bg-slate-100 dark:bg-slate-800'
+                          : ''
+                      )}>
                       {file.replace(/-/gi, ' ')}
                     </a>
                   </Link>
