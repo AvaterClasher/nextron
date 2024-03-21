@@ -2,17 +2,17 @@ import clsx from 'clsx'
 import Link from 'next/link'
 
 const Grid: React.FC<{
-  features: {
+  items: {
     color?: string
     customColor?: string
     title?: string
     description?: string
     link?: string
   }[]
-}> = ({ features }) => {
+}> = ({ items }) => {
   return (
     <div className='not-prose grid gap-5 !text-black md:grid-cols-2'>
-      {features.map(({ color, title, description, customColor, link }, i) => (
+      {items.map(({ color, title, description, customColor, link }, i) => (
         <Link key={i} href={link || '#'}>
           <a className='block'>
             <div

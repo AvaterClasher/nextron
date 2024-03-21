@@ -1,15 +1,15 @@
-import clsx from 'clsx';
-import { AnchorHTMLAttributes } from 'react';
-import Link from 'next/link';
-import React from 'react';
+import clsx from 'clsx'
+import { AnchorHTMLAttributes } from 'react'
+import Link from 'next/link'
+import React from 'react'
 
 const DocsLink: React.FC<
   AnchorHTMLAttributes<HTMLAnchorElement> & { noInvert?: boolean }
 > = ({ ...props }) => {
-  const isRelative = props.href?.startsWith('/') ?? false;
-  const Wrap = isRelative ? Link : React.Fragment;
-  const wrapProps = isRelative ? { href: props.href } : {};
-  const linkProps = !isRelative ? { target: '_blank' } : {};
+  const isRelative = props.href?.startsWith('/' || '#') ?? false
+  const Wrap = isRelative ? Link : React.Fragment
+  const wrapProps = isRelative ? { href: props.href } : {}
+  const linkProps = !isRelative ? { target: '_blank' } : {}
 
   return (
     // @ts-ignore
@@ -24,7 +24,7 @@ const DocsLink: React.FC<
         {props.children}
       </a>
     </Wrap>
-  );
-};
+  )
+}
 
-export default DocsLink;
+export default DocsLink
