@@ -14,11 +14,12 @@ import DocsLayout from '@/layouts/DocsLayout'
 import { DocsPageProps } from 'types/types'
 import MDXRenderer from '@/components/docs/MDXRenderer'
 import DocsMDXcomponents from '@/components/docs/documentation/components'
-import { NextSeo } from 'next-seo'
 import Link from 'next/link'
+import { NextSeo } from 'next-seo'
 import web3forms from 'use-web3forms'
+import { useRouter } from 'next/router'
+import clsx from 'clsx'
 
-// @ts-ignore
 const Page: NextPage<DocsPageProps> = ({
   content,
   tocHtml,
@@ -31,6 +32,7 @@ const Page: NextPage<DocsPageProps> = ({
   siteId,
 }) => {
   const Component = useMemo(() => getMDXComponent(content), [content])
+
   return (
     <div>
       <NextSeo
@@ -55,12 +57,11 @@ const Page: NextPage<DocsPageProps> = ({
           cardType: 'summary_large_image',
         }}
       />
-      <div className='sticky top-0 z-30'>
+      <div className='sticky top-0 z-50'>
         <DocsNav links={navLinks} navbarCta={navCta} logo={siteName} />
       </div>
       <DocsLayout
         siteId={siteId}
-        extraTopMargin={false}
         LeftSidebarContent={() => (
           <ul className='mt-10 space-y-4'>
             {sidebar.map((file: string) => {
@@ -69,8 +70,7 @@ const Page: NextPage<DocsPageProps> = ({
                   <Link href={`/${slug}/docs/${file}`}>
                     <a
                       className='block rounded px-3 py-2 capitalize hover:bg-slate-50 dark:hover:bg-slate-800'
-                      href={`/${slug}/docs/${file}`}
-                    >
+                      href={`/${slug}/docs/${file}`}>
                       {file.replace(/-/gi, ' ')}
                     </a>
                   </Link>
@@ -86,8 +86,7 @@ const Page: NextPage<DocsPageProps> = ({
               <ul dangerouslySetInnerHTML={{ __html: tocHtml }}></ul>
             </div>
           </div>
-        )}
-      >
+        )}>
         <MDXRenderer>
           {/* @ts-ignore */}
           <Component components={DocsMDXcomponents} />

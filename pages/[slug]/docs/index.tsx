@@ -43,8 +43,7 @@ const Page: NextPage<DocsPageProps> = ({
                     <Link href={`/${slug}/docs/${file}`}>
                       <a
                         className='block rounded px-3 py-2 capitalize hover:bg-slate-50 dark:hover:bg-slate-800'
-                        href={`/${slug}/docs/${file}`}
-                      >
+                        href={`/${slug}/docs/${file}`}>
                         {file.replace(/-/gi, ' ')}
                       </a>
                     </Link>
@@ -60,8 +59,7 @@ const Page: NextPage<DocsPageProps> = ({
                 <ul dangerouslySetInnerHTML={{ __html: tocHtml }}></ul>
               </div>
             </div>
-          )}
-        >
+          )}>
           <MDXRenderer>
             {/* @ts-ignore */}
             <Component components={DocsMDXcomponents} />
