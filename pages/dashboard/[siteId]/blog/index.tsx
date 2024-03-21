@@ -48,8 +48,7 @@ const BlogPage = () => {
     <DashboardLayout
       title='Blogs'
       subtitle='Feedbacks that people submitted through the documentation website'
-      active='blog'
-    >
+      active='blog'>
       <div className='max-w-3xl'>
         <div className='flex w-full flex-wrap items-center justify-between'>
           <Heading2>All Blogs</Heading2>
@@ -68,16 +67,15 @@ const BlogPage = () => {
                       description: formData.description,
                       siteId: siteId,
                     })
-                    .then(({ data }) => {
-                      router.push(`/dashboard/blog/${siteId}`)
+                    .then(({ data }: { data: Blog }) => {
+                      router.push(`/dashboard/blog/${data?.id}`)
                     })
                   toast.promise(req, {
                     success: 'Blog created!',
                     error: 'Error creating blog',
                     loading: 'Creating blog...',
                   })
-                })}
-              >
+                })}>
                 <div>
                   <label htmlFor='title'>Blog title</label>
                   <input
@@ -114,8 +112,7 @@ const BlogPage = () => {
                 noInvert
                 key={blog.id}
                 className='my-3 !p-5'
-                href={`/dashboard/${siteId}/blog/${blog.id}`}
-              >
+                href={`/dashboard/${siteId}/blog/${blog.id}`}>
                 <h3 className='mb-2 text-lg font-semibold'>{blog.title}</h3>
                 <p className='text-opacity-50'>{blog.description}</p>
               </CustomLink>
