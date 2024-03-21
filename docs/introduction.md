@@ -17,4 +17,4 @@ Here are some of the amazing features of Nextron:
 - Dashboard to manage your docs site.
 - Support for private repositories.
 
-[Now, let's go and create a documentation site for your project.](/getting-started)
+[Now, let's go and create a documentation site for your project.](/Nextron/docs/getting-started)

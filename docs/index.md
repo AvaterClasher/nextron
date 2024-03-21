@@ -2,10 +2,10 @@
 
 <Grid
 items={[
-{title: 'Introduction', description: "What's Nextron and how it simplify your documentating experience" ,link: '/docs/getting-started', color: 'blue'},
-{title: 'Getting Started', description: 'Create your first documentation site with Nextron', link: '/docs/getting-started', color: 'blue'},
-{title: 'Customizing', description: 'Learn how you can customize the look and feel of your docs site.', link: '/docs/getting-started', color: 'cyan'},
-{title: 'Components', description: 'All the dynamic components(mdx) that you can use in your docs', link: '/docs/components', color: 'yellow'},
+{title: 'Introduction', description: "What's Nextron and how it simplify your documentating experience" ,link: '/Nextron/docs/getting-started', color: 'blue'},
+{title: 'Getting Started', description: 'Create your first documentation site with Nextron', link: '/Nextron/docs/getting-started', color: 'blue'},
+{title: 'Customizing', description: 'Learn how you can customize the look and feel of your docs site.', link: '/Nextron/docs/getting-started', color: 'cyan'},
+{title: 'Components', description: 'All the dynamic components(mdx) that you can use in your docs', link: '/Nextron/docs/components', color: 'yellow'},
 ]}
 />
 
@@ -15,6 +15,6 @@ Nextron requires no configuration and yet is highly customizable. You just need 
 
 Here are some links that can help you get started with Nextron:
 
-- [Introduction to Nextron](/docs/introduction)
-- [Getting Started guide](/docs/getting-started)
-- [How Nextron works](/docs/how-nextron-works)
+- [Introduction to Nextron](/Nextron/docs/introduction)
+- [Getting Started guide](/Nextron/docs/getting-started)
+- [How Nextron works](/Nextron/docs/how-nextron-works)
