@@ -1,0 +1,5 @@
+-- AlterTable
+ALTER TABLE "Blog" ALTER COLUMN "ogImageUrl" DROP NOT NULL,
+ALTER COLUMN "content" DROP NOT NULL,
+ALTER COLUMN "content" SET DEFAULT '',
+ALTER COLUMN "postedBy" SET DEFAULT '';

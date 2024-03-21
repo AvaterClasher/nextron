@@ -119,7 +119,7 @@ const DashboardLayout: React.FC<{
                               '!bg-slate-100 font-semibold dark:!bg-slate-700 dark:!text-white'
                           )}
                         >
-                          <Icon className='mr-2 inline-block scale-75 opacity-75' />
+                          <Icon className='relative -top-px mr-2 inline-block scale-75 opacity-75' />
                           <span className='hidden md:inline-block'>
                             {link.name}
                           </span>
