@@ -20,8 +20,7 @@ const DocsMDXcomponents = {
       <pre ref={ref} {...props} className='relative'>
         <button
           className='absolute right-3 top-2 inline-block'
-          onClick={() => copyToClipboard(ref.current?.textContent)}
-        >
+          onClick={() => copyToClipboard(ref.current?.textContent)}>
           <FeatherIcons.Clipboard className='h-6 w-6 text-slate-400 transition-all hover:scale-105 hover:text-slate-50' />
         </button>
         {props?.children}
@@ -38,6 +37,9 @@ const DocsMDXcomponents = {
   RoughNotation: RoughNotation,
   Grid: Grid,
   Head: Head,
+  CustomComponent: (props: any) => (
+    <div className='not-prose'>{props?.children}</div>
+  ),
 }
 
 function copyToClipboard(children: string | null | undefined): void {
