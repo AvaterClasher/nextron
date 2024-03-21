@@ -7,13 +7,13 @@ html.dark {
 }
 
 html .logo {
-  -webkit-filter: invert(100%); /* safari 6.0 - 9.0 */
-  filter: invert(100%);
+  -webkit-filter: invert(0%); /* safari 6.0 - 9.0 */
+  filter: invert(0%);
 }
 
 html.dark .logo {
-  -webkit-filter: invert(0%); /* safari 6.0 - 9.0 */
-  filter: invert(0%);
+  -webkit-filter: invert(100%); /* safari 6.0 - 9.0 */
+  filter: invert(100%);
 }
 
 html {

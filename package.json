@@ -16,7 +16,6 @@
     "@prisma/client": "^4.10.0",
     "@pondorasti/remark-img-links": "^1.0.8",
     "remark-remove-comments": "^0.2.0",
-    "react-awesome-reveal": "^3.8.1",
     "@radix-ui/react-avatar": "^0.1.3",
     "@radix-ui/react-dialog": "^0.1.5",
     "@radix-ui/react-dropdown-menu": "^0.1.4",
