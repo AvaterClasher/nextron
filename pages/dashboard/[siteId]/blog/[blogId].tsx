@@ -166,9 +166,9 @@ const BlogPage = () => {
                   />
                 </div>
                 <div>
-                  <H3>Posted by (GitHub username)</H3>
+                  <H3>Posted by (Twitter username)</H3>
                   <input
-                    placeholder='AvaterClasher'
+                    placeholder='Avater004'
                     className='text-input'
                     defaultValue={data?.postedBy || ''}
                     {...register('postedBy')}

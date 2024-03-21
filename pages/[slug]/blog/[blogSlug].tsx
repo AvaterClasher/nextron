@@ -16,6 +16,7 @@ const BlogPage: NextPage<{
   description: string
   navbarLinks: NavbarLink[]
   navbarCta: string
+  author: string
   logo: string
 }> = ({
   mdxCode,
@@ -24,6 +25,7 @@ const BlogPage: NextPage<{
   navbarCta,
   navbarLinks,
   ogImageUrl,
+  author,
   title,
   updatedAt,
 }) => {
@@ -35,6 +37,25 @@ const BlogPage: NextPage<{
         <h2 className='text-5xl font-extrabold'>{title}</h2>
         <p className='my-2 text-lg text-slate-600 dark:text-slate-400'>
           {description}
+        </p>
+        <p className='my-5 text-sm text-opacity-30'>
+          Posted by:{' '}
+          <a
+            target='_blank'
+            rel='noopener noreferrer'
+            href={`https://twitter.com/${author}`}>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={`https://unavatar.io/twitter/${author}`}
+              width={25}
+              height={25}
+              className='ml-1 mr-1 inline-block rounded-full'
+              alt=''
+            />
+            <span className='text-blue-600 dark:text-blue-400'>
+              {author.startsWith('@') ? author : `@${author}`}
+            </span>
+          </a>
         </p>
         {ogImageUrl && (
           // eslint-disable-next-line @next/next/no-img-element
@@ -88,6 +109,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       navbarLinks: blog?.site?.navbarLinks,
       navbarCta: blog?.site?.navbarCta,
       logo: blog?.site?.siteName,
+      author: blog?.postedBy,
     },
   }
 }
