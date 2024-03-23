@@ -1,6 +1,5 @@
 import { useSession } from 'next-auth/react'
 import clsx from 'clsx'
-import Link from 'next/link'
 import Logo from './Logo'
 import ProfileDropdown from './ProfileDropdown'
 

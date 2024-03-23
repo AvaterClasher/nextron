@@ -2,8 +2,6 @@ import Nav from '@/components/Nav'
 import type { NextPage } from 'next'
 import { RoughNotation } from 'react-rough-notation'
 import Link from 'next/link'
-import Image from 'next/image'
-import LandingPageImage from '../public/landing-page-image.png'
 import clsx from 'clsx'
 import {
   Zap,
@@ -12,7 +10,6 @@ import {
   Terminal,
   MessageSquare,
   GitHub,
-  Moon,
   Box,
 } from 'react-feather'
 import WorkflowSvg from '@/components/WorkflowSvg'
@@ -118,9 +115,8 @@ const Home: NextPage = () => {
               </span>
             </h3>
             <p className='mt-2 max-w-3xl text-lg opacity-70'>
-              Just focus on content. Nextron will take care of hosting,
-              feedback collection, blog management, SEO, lighthouse score and
-              many more.{' '}
+              Just focus on content. Nextron will take care of hosting, feedback
+              collection, blog management, SEO, lighthouse score and many more.{' '}
               <RoughNotation
                 type='underline'
                 strokeWidth={2}
@@ -180,8 +176,7 @@ const Home: NextPage = () => {
           </h3>
           <p className='my-3 max-w-3xl text-lg opacity-70'>
             Every documentation generator needs a separate <code>`.json`</code>{' '}
-            config file to function properly. Nextron works without
-            any config.
+            config file to function properly. Nextron works without any config.
           </p>
         </div>
 

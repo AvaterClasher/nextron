@@ -10,7 +10,6 @@ import { newSiteSchema } from '@/lib/schemas/newSiteSchema'
 import { DevTool } from '@hookform/devtools'
 import axios from 'axios'
 import toast from 'react-hot-toast'
-import { useRouter } from 'next/router'
 import { usePrefetch } from 'use-link-prefetch'
 import { Site } from '@prisma/client'
 

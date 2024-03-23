@@ -1,5 +1,4 @@
 import DashboardNav from '@/components/DashboardNav'
-import { Button } from '@/components/ui/Button'
 import { Heading1, Heading2, Heading3 } from '@/components/ui/Typography'
 import ProtectedRoute from '@/lib/ProtectedRoute'
 import { usePrefetch } from 'use-link-prefetch'

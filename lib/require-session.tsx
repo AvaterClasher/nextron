@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 import { getSession } from 'next-auth/react'
-import { ApiRoute } from 'types/types'
+import { ApiRoute } from '../types/types'
 
 export default function requireSession(apiRoute: ApiRoute) {
   return async function handler(req: NextApiRequest, res: NextApiResponse) {

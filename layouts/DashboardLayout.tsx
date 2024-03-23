@@ -4,7 +4,6 @@ import { CustomLink } from '@/components/ui/Link'
 import { Heading1, Markdown } from '@/components/ui/Typography'
 import ProtectedRoute from '@/lib/ProtectedRoute'
 import clsx from 'clsx'
-import { useSession } from 'next-auth/react'
 import { useRouter } from 'next/router'
 import {
   Activity,

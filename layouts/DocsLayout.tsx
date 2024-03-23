@@ -1,7 +1,6 @@
 import Feedback from '@/components/docs/Feedback'
 import { Button } from '@/components/ui/Button'
 import { MenuContent, MenuRoot, MenuTrigger } from '@/components/ui/Menu'
-import { Markdown } from '@/components/ui/Typography'
 import clsx from 'clsx'
 import { useState } from 'react'
 import { Sidebar } from 'react-feather'

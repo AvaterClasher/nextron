@@ -1,5 +1,4 @@
-import { Heading2, Heading3 } from '@/components/ui/Typography'
-import { CustomLink } from '@/components/ui/Link'
+import { Heading3 } from '@/components/ui/Typography'
 import { Markdown, TextSmall } from '@/components/ui/Typography'
 import DashboardLayout from '@/layouts/DashboardLayout'
 import { Feedback, NavbarLink, Site } from '@prisma/client'

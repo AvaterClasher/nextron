@@ -7,7 +7,6 @@ import {
   DialogTrigger,
 } from '@/components/ui/Dialog'
 import DashboardLayout from '@/layouts/DashboardLayout'
-// import shikiThemes from '@/lib/shikiThemes'
 import { Feedback, NavbarLink, Site } from '@prisma/client'
 import axios from 'axios'
 import { useRouter } from 'next/router'
